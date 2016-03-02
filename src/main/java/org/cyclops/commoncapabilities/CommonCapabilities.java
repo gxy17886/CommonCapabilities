@@ -7,11 +7,12 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import org.apache.logging.log4j.Level;
+import org.cyclops.commoncapabilities.capability.Capabilities;
+import org.cyclops.commoncapabilities.modcompat.vanilla.VanillaModCompat;
 import org.cyclops.cyclopscore.config.ConfigHandler;
-import org.cyclops.cyclopscore.config.extendedconfig.ItemConfigReference;
-import org.cyclops.cyclopscore.init.ItemCreativeTab;
 import org.cyclops.cyclopscore.init.ModBaseVersionable;
 import org.cyclops.cyclopscore.init.RecipeHandler;
+import org.cyclops.cyclopscore.modcompat.ModCompatLoader;
 import org.cyclops.cyclopscore.proxy.ICommonProxy;
 
 /**
@@ -51,6 +52,12 @@ public class CommonCapabilities extends ModBaseVersionable {
         return new RecipeHandler(this);
     }
 
+    @Override
+    protected void loadModCompats(ModCompatLoader modCompatLoader) {
+        super.loadModCompats(modCompatLoader);
+        modCompatLoader.addModCompat(new VanillaModCompat());
+    }
+
     /**
      * The pre-initialization, will register required configs.
      * @param event The Forge event required for this.
@@ -59,6 +66,7 @@ public class CommonCapabilities extends ModBaseVersionable {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
+        Capabilities.register();
     }
     
     /**
@@ -113,8 +121,6 @@ public class CommonCapabilities extends ModBaseVersionable {
 
     @Override
     public CreativeTabs constructDefaultCreativeTab() {
-        // Uncomment the following line and specify an item config class to add a creative tab
-        // return new ItemCreativeTab(this, new ItemConfigReference(ITEM CONFIG CLASS));
         return null;
     }
 
