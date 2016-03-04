@@ -2,7 +2,9 @@
 
 [![Build Status](https://travis-ci.org/CyclopsMC/CommonCapabilities.svg?branch=master-1.8)](https://travis-ci.org/CyclopsMC/CommonCapabilities)
 
-Forge Capabilities that can be shared by multiple mods
+Forge Capabilities that can be shared by multiple mods.
+This mod is responsible for registering the capabilities from the [API](https://github.com/CyclopsMC/CommonCapabilitiesAPI),
+it also provides default implementations of these capabilities for various mods.
 
 All stable releases (including deobfuscated builds) can be found on [CurseForge](http://minecraft.curseforge.com/mc-mods/TODO/files).
 
