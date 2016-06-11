@@ -7,7 +7,8 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import org.apache.logging.log4j.Level;
-import org.cyclops.commoncapabilities.capability.Capabilities;
+import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
+import org.cyclops.commoncapabilities.capability.worker.WorldNameableConfig;
 import org.cyclops.commoncapabilities.modcompat.vanilla.VanillaModCompat;
 import org.cyclops.cyclopscore.config.ConfigHandler;
 import org.cyclops.cyclopscore.init.ModBaseVersionable;
@@ -66,7 +67,6 @@ public class CommonCapabilities extends ModBaseVersionable {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
-        Capabilities.register();
     }
     
     /**
@@ -127,6 +127,13 @@ public class CommonCapabilities extends ModBaseVersionable {
     @Override
     public void onGeneralConfigsRegister(ConfigHandler configHandler) {
         configHandler.add(new GeneralConfig());
+    }
+
+    @Override
+    public void onMainConfigsRegister(ConfigHandler configHandler) {
+        super.onMainConfigsRegister(configHandler);
+        configHandler.add(new WorkerConfig());
+        configHandler.add(new WorldNameableConfig());
     }
 
     @Override

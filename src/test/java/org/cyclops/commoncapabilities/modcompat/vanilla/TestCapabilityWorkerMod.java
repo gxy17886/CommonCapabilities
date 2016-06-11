@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.cyclops.commoncapabilities.api.capability.work.IWorker;
-import org.cyclops.commoncapabilities.capability.Capabilities;
+import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
 
 /**
  * A simple test mod which will print the work status for worker tiles.
@@ -28,9 +28,9 @@ public class TestCapabilityWorkerMod {
         if (event.getItemStack().getItem() != Items.BLAZE_ROD) return;
 
         TileEntity te = event.getWorld().getTileEntity(event.getPos());
-        if (te != null && te.hasCapability(Capabilities.WORKER, event.getFace())) {
+        if (te != null && te.hasCapability(WorkerConfig.CAPABILITY, event.getFace())) {
             event.setCanceled(true);
-            IWorker worker = te.getCapability(Capabilities.WORKER, event.getFace());
+            IWorker worker = te.getCapability(WorkerConfig.CAPABILITY, event.getFace());
             System.out.println("Has work: " + worker.hasWork());
             System.out.println("Can work: " + worker.canWork());
         }

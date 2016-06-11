@@ -11,7 +11,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import org.cyclops.commoncapabilities.capability.Capabilities;
+import org.cyclops.commoncapabilities.capability.worker.WorldNameableConfig;
 
 /**
  * A simple test mod which will print the world-nameable capability for tiles, entities and items.
@@ -31,9 +31,9 @@ public class TestCapabilityWorldNameableMod {
         if (event.getItemStack().getItem() != Items.BONE) return;
 
         TileEntity te = event.getWorld().getTileEntity(event.getPos());
-        if (te != null && te.hasCapability(Capabilities.WORLDNAMEABLE, event.getFace())) {
+        if (te != null && te.hasCapability(WorldNameableConfig.CAPABILITY, event.getFace())) {
             event.setCanceled(true);
-            IWorldNameable worldNameable = te.getCapability(Capabilities.WORLDNAMEABLE, event.getFace());
+            IWorldNameable worldNameable = te.getCapability(WorldNameableConfig.CAPABILITY, event.getFace());
             System.out.println("World nameable: " + worldNameable.getName());
         }
     }
@@ -45,9 +45,9 @@ public class TestCapabilityWorldNameableMod {
         if (event.getEntityPlayer().getHeldItemMainhand().getItem() != Items.BONE) return;
 
         Entity target = event.getTarget();
-        if (target != null && target.hasCapability(Capabilities.WORLDNAMEABLE, null)) {
+        if (target != null && target.hasCapability(WorldNameableConfig.CAPABILITY, null)) {
             event.setCanceled(true);
-            IWorldNameable worldNameable = target.getCapability(Capabilities.WORLDNAMEABLE, null);
+            IWorldNameable worldNameable = target.getCapability(WorldNameableConfig.CAPABILITY, null);
             System.out.println("World nameable: " + worldNameable.getName());
         }
     }
@@ -58,9 +58,9 @@ public class TestCapabilityWorldNameableMod {
         if (event.getItemStack().getItem() != Items.BONE) return;
 
         ItemStack itemStack = event.getItemStack();
-        if (itemStack.hasCapability(Capabilities.WORLDNAMEABLE, null)) {
+        if (itemStack.hasCapability(WorldNameableConfig.CAPABILITY, null)) {
             event.setCanceled(true);
-            IWorldNameable worldNameable = itemStack.getCapability(Capabilities.WORLDNAMEABLE, null);
+            IWorldNameable worldNameable = itemStack.getCapability(WorldNameableConfig.CAPABILITY, null);
             System.out.println("World nameable: " + worldNameable.getName());
         }
     }

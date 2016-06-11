@@ -13,7 +13,8 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.cyclops.commoncapabilities.CommonCapabilities;
 import org.cyclops.commoncapabilities.Reference;
 import org.cyclops.commoncapabilities.api.capability.work.IWorker;
-import org.cyclops.commoncapabilities.capability.Capabilities;
+import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
+import org.cyclops.commoncapabilities.capability.worker.WorldNameableConfig;
 import org.cyclops.commoncapabilities.capability.worldnameable.EntityLivingWorldNameable;
 import org.cyclops.commoncapabilities.capability.worldnameable.ItemStackWorldNameable;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.work.VanillaBrewingStandWorker;
@@ -54,25 +55,25 @@ public class VanillaModCompat implements IModCompat {
                     new ICapabilityConstructor<IWorker, TileEntityFurnace>() {
                         @Override
                         public Capability<IWorker> getCapability() {
-                            return Capabilities.WORKER;
+                            return WorkerConfig.CAPABILITY;
                         }
 
                         @Nullable
                         @Override
                         public ICapabilityProvider createProvider(TileEntityFurnace host) {
-                            return new DefaultCapabilityProvider<>(Capabilities.WORKER, new VanillaFurnaceWorker(host));
+                            return new DefaultCapabilityProvider<>(WorkerConfig.CAPABILITY, new VanillaFurnaceWorker(host));
                         }
                     });
             registry.registerTile(TileEntityBrewingStand.class,
                     new ICapabilityConstructor<IWorker, TileEntityBrewingStand>() {
                         @Override
                         public Capability<IWorker> getCapability() {
-                            return Capabilities.WORKER;
+                            return WorkerConfig.CAPABILITY;
                         }
 
                         @Override
                         public ICapabilityProvider createProvider(TileEntityBrewingStand host) {
-                            return new DefaultCapabilityProvider<>(Capabilities.WORKER, new VanillaBrewingStandWorker(host));
+                            return new DefaultCapabilityProvider<>(WorkerConfig.CAPABILITY, new VanillaBrewingStandWorker(host));
                         }
                     });
 
@@ -81,49 +82,49 @@ public class VanillaModCompat implements IModCompat {
                     new ICapabilityConstructor<IWorldNameable, TileEntity>() {
                         @Override
                         public Capability<IWorldNameable> getCapability() {
-                            return Capabilities.WORLDNAMEABLE;
+                            return WorldNameableConfig.CAPABILITY;
                         }
 
                         @Override
                         public ICapabilityProvider createProvider(TileEntity host) {
-                            return new DefaultCapabilityProvider<>(Capabilities.WORLDNAMEABLE, (IWorldNameable) host);
+                            return new DefaultCapabilityProvider<>(WorldNameableConfig.CAPABILITY, (IWorldNameable) host);
                         }
                     });
             registry.registerInheritableEntity(IWorldNameable.class,
                     new ICapabilityConstructor<IWorldNameable, Entity>() {
                         @Override
                         public Capability<IWorldNameable> getCapability() {
-                            return Capabilities.WORLDNAMEABLE;
+                            return WorldNameableConfig.CAPABILITY;
                         }
 
                         @Override
                         public ICapabilityProvider createProvider(Entity host) {
-                            return new DefaultCapabilityProvider<>(Capabilities.WORLDNAMEABLE, (IWorldNameable) host);
+                            return new DefaultCapabilityProvider<>(WorldNameableConfig.CAPABILITY, (IWorldNameable) host);
                         }
                     });
             registry.registerInheritableEntity(EntityLiving.class,
                     new ICapabilityConstructor<IWorldNameable, EntityLiving>() {
                         @Override
                         public Capability<IWorldNameable> getCapability() {
-                            return Capabilities.WORLDNAMEABLE;
+                            return WorldNameableConfig.CAPABILITY;
                         }
 
                         @Override
                         public ICapabilityProvider createProvider(EntityLiving host) {
-                            return new DefaultCapabilityProvider<>(Capabilities.WORLDNAMEABLE, new EntityLivingWorldNameable(host));
+                            return new DefaultCapabilityProvider<>(WorldNameableConfig.CAPABILITY, new EntityLivingWorldNameable(host));
                         }
                     });
             registry.registerInheritableItem(Item.class,
                     new ICapabilityConstructor<IWorldNameable, ItemStack>() {
                         @Override
                         public Capability<IWorldNameable> getCapability() {
-                            return Capabilities.WORLDNAMEABLE;
+                            return WorldNameableConfig.CAPABILITY;
                         }
 
                         @Override
                         public ICapabilityProvider createProvider(ItemStack host) {
                             if(host.hasDisplayName()) {
-                                return new DefaultCapabilityProvider<>(Capabilities.WORLDNAMEABLE, new ItemStackWorldNameable(host));
+                                return new DefaultCapabilityProvider<>(WorldNameableConfig.CAPABILITY, new ItemStackWorldNameable(host));
                             }
                             return null;
                         }
