@@ -23,15 +23,14 @@ public class TestCapabilityWorkerMod {
     }
 
     @SubscribeEvent
-    public void onInteract(PlayerInteractEvent event) {
-        if (event.action != PlayerInteractEvent.Action.LEFT_CLICK_BLOCK) return;
-        if (event.entityPlayer.getHeldItem() == null) return;
-        if (event.entityPlayer.getHeldItem().getItem() != Items.blaze_rod) return;
+    public void onInteract(PlayerInteractEvent.LeftClickBlock event) {
+        if (event.getItemStack() == null) return;
+        if (event.getItemStack().getItem() != Items.BLAZE_ROD) return;
 
-        TileEntity te = event.world.getTileEntity(event.pos);
-        if (te != null && te.hasCapability(Capabilities.WORKER, event.face)) {
+        TileEntity te = event.getWorld().getTileEntity(event.getPos());
+        if (te != null && te.hasCapability(Capabilities.WORKER, event.getFace())) {
             event.setCanceled(true);
-            IWorker worker = te.getCapability(Capabilities.WORKER, event.face);
+            IWorker worker = te.getCapability(Capabilities.WORKER, event.getFace());
             System.out.println("Has work: " + worker.hasWork());
             System.out.println("Can work: " + worker.canWork());
         }

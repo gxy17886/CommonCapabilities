@@ -1,7 +1,7 @@
 package org.cyclops.commoncapabilities.capability.worldnameable;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IChatComponent;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.IWorldNameable;
 
 /**
@@ -27,7 +27,7 @@ public class ItemStackWorldNameable implements IWorldNameable {
     }
 
     @Override
-    public IChatComponent getDisplayName() {
-        return itemStack.getChatComponent();
+    public ITextComponent getDisplayName() {
+        return itemStack.getTextComponent();
     }
 }

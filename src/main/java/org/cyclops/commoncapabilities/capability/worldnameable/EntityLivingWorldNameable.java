@@ -1,7 +1,7 @@
 package org.cyclops.commoncapabilities.capability.worldnameable;
 
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.util.IChatComponent;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.IWorldNameable;
 
 /**
@@ -27,7 +27,7 @@ public class EntityLivingWorldNameable implements IWorldNameable {
     }
 
     @Override
-    public IChatComponent getDisplayName() {
+    public ITextComponent getDisplayName() {
         return entityLiving.getDisplayName();
     }
 }

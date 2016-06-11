@@ -11,7 +11,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import org.cyclops.commoncapabilities.api.capability.work.IWorker;
 import org.cyclops.commoncapabilities.capability.Capabilities;
 
 /**
@@ -27,26 +26,25 @@ public class TestCapabilityWorldNameableMod {
     }
 
     @SubscribeEvent
-    public void onTileInteract(PlayerInteractEvent event) {
-        if (event.action != PlayerInteractEvent.Action.LEFT_CLICK_BLOCK) return;
-        if (event.entityPlayer.getHeldItem() == null) return;
-        if (event.entityPlayer.getHeldItem().getItem() != Items.bone) return;
+    public void onTileInteract(PlayerInteractEvent.LeftClickBlock event) {
+        if (event.getItemStack() == null) return;
+        if (event.getItemStack().getItem() != Items.BONE) return;
 
-        TileEntity te = event.world.getTileEntity(event.pos);
-        if (te != null && te.hasCapability(Capabilities.WORLDNAMEABLE, event.face)) {
+        TileEntity te = event.getWorld().getTileEntity(event.getPos());
+        if (te != null && te.hasCapability(Capabilities.WORLDNAMEABLE, event.getFace())) {
             event.setCanceled(true);
-            IWorldNameable worldNameable = te.getCapability(Capabilities.WORLDNAMEABLE, event.face);
+            IWorldNameable worldNameable = te.getCapability(Capabilities.WORLDNAMEABLE, event.getFace());
             System.out.println("World nameable: " + worldNameable.getName());
         }
     }
 
     @SubscribeEvent
     public void onEntityInteract(AttackEntityEvent event) {
-        if (event.entityPlayer == null) return;
-        if (event.entityPlayer.getHeldItem() == null) return;
-        if (event.entityPlayer.getHeldItem().getItem() != Items.bone) return;
+        if (event.getEntityPlayer() == null) return;
+        if (event.getEntityPlayer().getHeldItemMainhand() == null) return;
+        if (event.getEntityPlayer().getHeldItemMainhand().getItem() != Items.BONE) return;
 
-        Entity target = event.target;
+        Entity target = event.getTarget();
         if (target != null && target.hasCapability(Capabilities.WORLDNAMEABLE, null)) {
             event.setCanceled(true);
             IWorldNameable worldNameable = target.getCapability(Capabilities.WORLDNAMEABLE, null);
@@ -55,12 +53,11 @@ public class TestCapabilityWorldNameableMod {
     }
 
     @SubscribeEvent
-    public void onItemInteract(PlayerInteractEvent event) {
-        if (event.action != PlayerInteractEvent.Action.RIGHT_CLICK_AIR) return;
-        if (event.entityPlayer.getHeldItem() == null) return;
-        if (event.entityPlayer.getHeldItem().getItem() != Items.bone) return;
+    public void onItemInteract(PlayerInteractEvent.RightClickItem event) {
+        if (event.getItemStack() == null) return;
+        if (event.getItemStack().getItem() != Items.BONE) return;
 
-        ItemStack itemStack = event.entityPlayer.getHeldItem();
+        ItemStack itemStack = event.getItemStack();
         if (itemStack.hasCapability(Capabilities.WORLDNAMEABLE, null)) {
             event.setCanceled(true);
             IWorldNameable worldNameable = itemStack.getCapability(Capabilities.WORLDNAMEABLE, null);
