@@ -17,7 +17,7 @@ import org.cyclops.commoncapabilities.capability.worker.WorldNameableConfig;
  * A simple test mod which will print the world-nameable capability for tiles, entities and items.
  * @author rubensworks
  */
-@Mod(modid="test.commoncapabilities.capability.worldnameable",version="1.0")
+@Mod(modid="test.commoncapabilities.vanilla.capability.worldnameable",version="1.0")
 public class TestCapabilityWorldNameableMod {
     
     @Mod.EventHandler

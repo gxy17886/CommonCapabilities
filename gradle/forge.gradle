@@ -5,6 +5,14 @@ repositories {
         name "Cyclops Repo"
         url "https://dl.bintray.com/cyclopsmc/dev/"
     }
+    maven {
+        name = "bdew"
+        url = "http://jenkins.bdew.net/maven"
+    }
+    maven {
+        name = "Dankhax"
+        url = "http://maven.epoxide.xyz"
+    }
 }
 dependencies {
     // Add something like 'cyclopscore_version_local=0.1.0-DEV' to your gradle.properties if you want to use a custom local CyclopsCore version.
@@ -13,6 +21,9 @@ dependencies {
     } else {
         compile "org.cyclops.cyclopscore:CyclopsCore:${config.minecraft_version}-${config.cyclopscore_version}:deobf"
     }
+
+    compile "net.bdew.thirdparty:rfapi:${config.rfapi_version}-mc1.8.9:api" // http://jenkins.bdew.net/maven/net/bdew/thirdparty/rfapi/
+    compile "net.darkhax.tesla:Tesla:${config.minecraft_version}-${config.teslaapi_version}:deobf" // http://maven.epoxide.xyz/net/darkhax/tesla/Tesla/
 
     // Project lombok
     compile "org.projectlombok:lombok:1.14.4"

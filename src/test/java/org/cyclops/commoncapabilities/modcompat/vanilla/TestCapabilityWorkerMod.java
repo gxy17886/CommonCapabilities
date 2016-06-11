@@ -14,7 +14,7 @@ import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
  * A simple test mod which will print the work status for worker tiles.
  * @author rubensworks
  */
-@Mod(modid="test.commoncapabilities.capability.worker",version="1.0")
+@Mod(modid="test.commoncapabilities.vanilla.capability.worker",version="1.0")
 public class TestCapabilityWorkerMod {
     
     @Mod.EventHandler
