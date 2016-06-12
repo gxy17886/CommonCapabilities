@@ -13,6 +13,10 @@ repositories {
         name = "Dankhax"
         url = "http://maven.epoxide.xyz"
     }
+    maven {
+        name = "Terrag"
+        url = "http://maven.tterrag.com/"
+    }
 }
 dependencies {
     // Add something like 'cyclopscore_version_local=0.1.0-DEV' to your gradle.properties if you want to use a custom local CyclopsCore version.
@@ -24,6 +28,8 @@ dependencies {
 
     compile "net.bdew.thirdparty:rfapi:${config.rfapi_version}-mc1.8.9:api" // http://jenkins.bdew.net/maven/net/bdew/thirdparty/rfapi/
     compile "net.darkhax.tesla:Tesla:${config.minecraft_version}-${config.teslaapi_version}:deobf" // http://maven.epoxide.xyz/net/darkhax/tesla/Tesla/
+    deobfCompile "com.enderio:EnderIO:${config.minecraft_version}-${config.enderio_version}" // http://maven.tterrag.com/com/enderio/EnderIO
+    deobfCompile "com.enderio.core:EnderCore:${config.minecraft_version}-${config.endercore_version}" // http://maven.tterrag.com/com/enderio/EnderIO
 
     // Project lombok
     compile "org.projectlombok:lombok:1.14.4"

@@ -39,6 +39,7 @@ public class Reference {
     public static final String MOD_VANILLA = "Minecraft";
     public static final String MOD_RF_API = "CoFHAPI";
     public static final String MOD_TESLA_API = "Tesla|API";
+    public static final String MOD_ENDERIO = "EnderIO";
     
     // Dependencies
     public static final String MOD_DEPENDENCIES =

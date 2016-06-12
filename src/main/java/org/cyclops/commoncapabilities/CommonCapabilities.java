@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.event.*;
 import org.apache.logging.log4j.Level;
 import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
 import org.cyclops.commoncapabilities.capability.worker.WorldNameableConfig;
+import org.cyclops.commoncapabilities.modcompat.enderio.EnderIOModCompat;
 import org.cyclops.commoncapabilities.modcompat.rf.RfApiCompat;
 import org.cyclops.commoncapabilities.modcompat.vanilla.VanillaModCompat;
 import org.cyclops.cyclopscore.config.ConfigHandler;
@@ -59,6 +60,7 @@ public class CommonCapabilities extends ModBaseVersionable {
         super.loadModCompats(modCompatLoader);
         modCompatLoader.addModCompat(new VanillaModCompat());
         modCompatLoader.addApiCompat(new RfApiCompat());
+        modCompatLoader.addModCompat(new EnderIOModCompat());
     }
 
     /**
