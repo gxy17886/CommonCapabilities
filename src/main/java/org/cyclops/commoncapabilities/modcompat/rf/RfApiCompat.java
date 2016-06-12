@@ -5,7 +5,7 @@ import org.cyclops.commoncapabilities.Reference;
 import org.cyclops.cyclopscore.modcompat.IApiCompat;
 
 /**
- * Mod compat for the Charset mod.
+ * Mod compat for the RF API.
  * @author rubensworks
  *
  */

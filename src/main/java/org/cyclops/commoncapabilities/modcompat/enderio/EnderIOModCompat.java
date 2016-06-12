@@ -29,7 +29,7 @@ import org.cyclops.cyclopscore.modcompat.capabilities.ICapabilityConstructor;
 import javax.annotation.Nullable;
 
 /**
- * Capabilities for Vanilla.
+ * Capabilities for EnderIO.
  * @author rubensworks
  */
 public class EnderIOModCompat implements IModCompat {

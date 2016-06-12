@@ -40,6 +40,7 @@ public class Reference {
     public static final String MOD_RF_API = "CoFHAPI";
     public static final String MOD_TESLA_API = "Tesla|API";
     public static final String MOD_ENDERIO = "EnderIO";
+    public static final String MOD_TCONSTRUCT = "tconstruct";
     
     // Dependencies
     public static final String MOD_DEPENDENCIES =

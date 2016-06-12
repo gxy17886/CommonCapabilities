@@ -11,6 +11,7 @@ import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
 import org.cyclops.commoncapabilities.capability.worker.WorldNameableConfig;
 import org.cyclops.commoncapabilities.modcompat.enderio.EnderIOModCompat;
 import org.cyclops.commoncapabilities.modcompat.rf.RfApiCompat;
+import org.cyclops.commoncapabilities.modcompat.tconstruct.TConstructModCompat;
 import org.cyclops.commoncapabilities.modcompat.vanilla.VanillaModCompat;
 import org.cyclops.cyclopscore.config.ConfigHandler;
 import org.cyclops.cyclopscore.init.ModBaseVersionable;
@@ -61,6 +62,7 @@ public class CommonCapabilities extends ModBaseVersionable {
         modCompatLoader.addModCompat(new VanillaModCompat());
         modCompatLoader.addApiCompat(new RfApiCompat());
         modCompatLoader.addModCompat(new EnderIOModCompat());
+        modCompatLoader.addModCompat(new TConstructModCompat());
     }
 
     /**
