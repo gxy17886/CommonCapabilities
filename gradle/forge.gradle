@@ -31,7 +31,7 @@ dependencies {
     }
 
     compile "net.bdew.thirdparty:rfapi:${config.rfapi_version}-mc1.8.9:api" // http://jenkins.bdew.net/maven/net/bdew/thirdparty/rfapi/
-    compile "net.darkhax.tesla:Tesla:${config.minecraft_version}-${config.teslaapi_version}:deobf" // http://maven.epoxide.xyz/net/darkhax/tesla/Tesla/
+    deobfCompile "net.darkhax.tesla:Tesla:${config.minecraft_version}-${config.teslaapi_version}" // http://maven.epoxide.xyz/net/darkhax/tesla/Tesla/
     deobfCompile "com.enderio:EnderIO:${config.minecraft_version}-${config.enderio_version}" // http://maven.tterrag.com/com/enderio/EnderIO
     deobfCompile "com.enderio.core:EnderCore:${config.minecraft_version}-${config.endercore_version}" // http://maven.tterrag.com/com/enderio/EnderIO
     deobfCompile "slimeknights.mantle:Mantle:${config.minecraft_version}-${config.mantle_version}" // http://dvs1.progwml6.com/files/maven/slimeknights/mantle/Mantle/maven-metadata.xml
