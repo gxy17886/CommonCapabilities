@@ -1,5 +1,6 @@
 package org.cyclops.commoncapabilities.modcompat.enderio;
 
+import crazypants.enderio.item.ItemYetaWrench;
 import crazypants.enderio.machine.AbstractPoweredTaskEntity;
 import crazypants.enderio.machine.alloy.TileAlloySmelter;
 import crazypants.enderio.machine.buffer.TileBuffer;
@@ -14,16 +15,21 @@ import crazypants.enderio.machine.spawner.TilePoweredSpawner;
 import crazypants.enderio.machine.transceiver.TileTransceiver;
 import crazypants.enderio.machine.vat.TileVat;
 import crazypants.enderio.machine.wireless.TileWirelessCharger;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.cyclops.commoncapabilities.CommonCapabilities;
 import org.cyclops.commoncapabilities.Reference;
 import org.cyclops.commoncapabilities.api.capability.work.IWorker;
+import org.cyclops.commoncapabilities.api.capability.wrench.DefaultWrench;
+import org.cyclops.commoncapabilities.api.capability.wrench.IWrench;
 import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
+import org.cyclops.commoncapabilities.capability.wrench.WrenchConfig;
 import org.cyclops.commoncapabilities.modcompat.enderio.capability.work.*;
 import org.cyclops.cyclopscore.modcompat.IModCompat;
 import org.cyclops.cyclopscore.modcompat.capabilities.CapabilityConstructorRegistry;
 import org.cyclops.cyclopscore.modcompat.capabilities.DefaultCapabilityProvider;
+import org.cyclops.cyclopscore.modcompat.capabilities.ICapabilityConstructor;
 import org.cyclops.cyclopscore.modcompat.capabilities.SimpleCapabilityConstructor;
 
 import javax.annotation.Nullable;
@@ -112,6 +118,21 @@ public class EnderIOModCompat implements IModCompat {
                         @Override
                         public ICapabilityProvider createProvider(TileKillerJoe host) {
                             return new DefaultCapabilityProvider<>(WorkerConfig.CAPABILITY, new TileKillerJoeWorker(host));
+                        }
+                    });
+
+            // Wrench
+            registry.registerItem(ItemYetaWrench.class,
+                    new ICapabilityConstructor<IWrench, ItemYetaWrench, ItemStack>() {
+                        @Override
+                        public Capability<IWrench> getCapability() {
+                            return WrenchConfig.CAPABILITY;
+                        }
+
+                        @Nullable
+                        @Override
+                        public ICapabilityProvider createProvider(ItemYetaWrench hostType, final ItemStack host) {
+                            return new DefaultCapabilityProvider<>(WrenchConfig.CAPABILITY, new DefaultWrench());
                         }
                     });
         }

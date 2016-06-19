@@ -61,6 +61,7 @@ public class TestCapabilityWrenchMod {
         if (event.getItemStack() == null) return;
         if (!event.getItemStack().hasCapability(WrenchConfig.CAPABILITY, null)) return;
 
+        System.out.println("wrenched!");
         IWrench wrench = event.getItemStack().getCapability(WrenchConfig.CAPABILITY, null);
         World world = event.getWorld();
         BlockPos pos = event.getPos();
