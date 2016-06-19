@@ -14,15 +14,16 @@ import org.cyclops.commoncapabilities.CommonCapabilities;
 import org.cyclops.commoncapabilities.Reference;
 import org.cyclops.commoncapabilities.api.capability.work.IWorker;
 import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
-import org.cyclops.commoncapabilities.capability.worker.WorldNameableConfig;
 import org.cyclops.commoncapabilities.capability.worldnameable.EntityLivingWorldNameable;
 import org.cyclops.commoncapabilities.capability.worldnameable.ItemStackWorldNameable;
+import org.cyclops.commoncapabilities.capability.worldnameable.WorldNameableConfig;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.work.VanillaBrewingStandWorker;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.work.VanillaFurnaceWorker;
 import org.cyclops.cyclopscore.modcompat.IModCompat;
 import org.cyclops.cyclopscore.modcompat.capabilities.CapabilityConstructorRegistry;
 import org.cyclops.cyclopscore.modcompat.capabilities.DefaultCapabilityProvider;
 import org.cyclops.cyclopscore.modcompat.capabilities.ICapabilityConstructor;
+import org.cyclops.cyclopscore.modcompat.capabilities.SimpleCapabilityConstructor;
 
 import javax.annotation.Nullable;
 
@@ -52,7 +53,7 @@ public class VanillaModCompat implements IModCompat {
             CapabilityConstructorRegistry registry = CommonCapabilities._instance.getCapabilityConstructorRegistry();
             // Worker
             registry.registerTile(TileEntityFurnace.class,
-                    new ICapabilityConstructor<IWorker, TileEntityFurnace>() {
+                    new SimpleCapabilityConstructor<IWorker, TileEntityFurnace>() {
                         @Override
                         public Capability<IWorker> getCapability() {
                             return WorkerConfig.CAPABILITY;
@@ -65,7 +66,7 @@ public class VanillaModCompat implements IModCompat {
                         }
                     });
             registry.registerTile(TileEntityBrewingStand.class,
-                    new ICapabilityConstructor<IWorker, TileEntityBrewingStand>() {
+                    new SimpleCapabilityConstructor<IWorker, TileEntityBrewingStand>() {
                         @Override
                         public Capability<IWorker> getCapability() {
                             return WorkerConfig.CAPABILITY;
@@ -79,7 +80,7 @@ public class VanillaModCompat implements IModCompat {
 
             // WorldNameable
             registry.registerInheritableTile(IWorldNameable.class,
-                    new ICapabilityConstructor<IWorldNameable, TileEntity>() {
+                    new SimpleCapabilityConstructor<IWorldNameable, TileEntity>() {
                         @Override
                         public Capability<IWorldNameable> getCapability() {
                             return WorldNameableConfig.CAPABILITY;
@@ -91,7 +92,7 @@ public class VanillaModCompat implements IModCompat {
                         }
                     });
             registry.registerInheritableEntity(IWorldNameable.class,
-                    new ICapabilityConstructor<IWorldNameable, Entity>() {
+                    new SimpleCapabilityConstructor<IWorldNameable, Entity>() {
                         @Override
                         public Capability<IWorldNameable> getCapability() {
                             return WorldNameableConfig.CAPABILITY;
@@ -103,7 +104,7 @@ public class VanillaModCompat implements IModCompat {
                         }
                     });
             registry.registerInheritableEntity(EntityLiving.class,
-                    new ICapabilityConstructor<IWorldNameable, EntityLiving>() {
+                    new SimpleCapabilityConstructor<IWorldNameable, EntityLiving>() {
                         @Override
                         public Capability<IWorldNameable> getCapability() {
                             return WorldNameableConfig.CAPABILITY;
@@ -115,14 +116,14 @@ public class VanillaModCompat implements IModCompat {
                         }
                     });
             registry.registerInheritableItem(Item.class,
-                    new ICapabilityConstructor<IWorldNameable, ItemStack>() {
+                    new ICapabilityConstructor<IWorldNameable, Item, ItemStack>() {
                         @Override
                         public Capability<IWorldNameable> getCapability() {
                             return WorldNameableConfig.CAPABILITY;
                         }
 
                         @Override
-                        public ICapabilityProvider createProvider(ItemStack host) {
+                        public ICapabilityProvider createProvider(Item hostType, ItemStack host) {
                             if(host.hasDisplayName()) {
                                 return new DefaultCapabilityProvider<>(WorldNameableConfig.CAPABILITY, new ItemStackWorldNameable(host));
                             }

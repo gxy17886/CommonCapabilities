@@ -24,7 +24,7 @@ import org.cyclops.commoncapabilities.modcompat.enderio.capability.work.*;
 import org.cyclops.cyclopscore.modcompat.IModCompat;
 import org.cyclops.cyclopscore.modcompat.capabilities.CapabilityConstructorRegistry;
 import org.cyclops.cyclopscore.modcompat.capabilities.DefaultCapabilityProvider;
-import org.cyclops.cyclopscore.modcompat.capabilities.ICapabilityConstructor;
+import org.cyclops.cyclopscore.modcompat.capabilities.SimpleCapabilityConstructor;
 
 import javax.annotation.Nullable;
 
@@ -63,7 +63,7 @@ public class EnderIOModCompat implements IModCompat {
             registerTaskWorker(registry, TileSliceAndSplice.class);
             registerTaskWorker(registry, TileTransceiver.class);
             registry.registerTile(TileCrafter.class,
-                    new ICapabilityConstructor<IWorker, TileCrafter>() {
+                    new SimpleCapabilityConstructor<IWorker, TileCrafter>() {
                         @Override
                         public Capability<IWorker> getCapability() {
                             return WorkerConfig.CAPABILITY;
@@ -76,7 +76,7 @@ public class EnderIOModCompat implements IModCompat {
                         }
                     });
             registry.registerTile(TileBuffer.class,
-                    new ICapabilityConstructor<IWorker, TileBuffer>() {
+                    new SimpleCapabilityConstructor<IWorker, TileBuffer>() {
                         @Override
                         public Capability<IWorker> getCapability() {
                             return WorkerConfig.CAPABILITY;
@@ -89,7 +89,7 @@ public class EnderIOModCompat implements IModCompat {
                         }
                     });
             registry.registerTile(TileWirelessCharger.class,
-                    new ICapabilityConstructor<IWorker, TileWirelessCharger>() {
+                    new SimpleCapabilityConstructor<IWorker, TileWirelessCharger>() {
                         @Override
                         public Capability<IWorker> getCapability() {
                             return WorkerConfig.CAPABILITY;
@@ -102,7 +102,7 @@ public class EnderIOModCompat implements IModCompat {
                         }
                     });
             registry.registerTile(TileKillerJoe.class,
-                    new ICapabilityConstructor<IWorker, TileKillerJoe>() {
+                    new SimpleCapabilityConstructor<IWorker, TileKillerJoe>() {
                         @Override
                         public Capability<IWorker> getCapability() {
                             return WorkerConfig.CAPABILITY;
@@ -120,7 +120,7 @@ public class EnderIOModCompat implements IModCompat {
     protected static <T extends AbstractPoweredTaskEntity> void registerTaskWorker(
             CapabilityConstructorRegistry registry, Class<T> clazz) {
         registry.registerTile(clazz,
-                new ICapabilityConstructor<IWorker, T>() {
+                new SimpleCapabilityConstructor<IWorker, T>() {
                     @Override
                     public Capability<IWorker> getCapability() {
                         return WorkerConfig.CAPABILITY;

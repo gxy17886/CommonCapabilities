@@ -11,7 +11,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import org.cyclops.commoncapabilities.capability.worker.WorldNameableConfig;
+import org.cyclops.commoncapabilities.capability.worldnameable.WorldNameableConfig;
 
 /**
  * A simple test mod which will print the world-nameable capability for tiles, entities and items.

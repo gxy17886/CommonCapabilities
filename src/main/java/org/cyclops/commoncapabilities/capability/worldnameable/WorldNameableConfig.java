@@ -1,14 +1,10 @@
-package org.cyclops.commoncapabilities.capability.worker;
+package org.cyclops.commoncapabilities.capability.worldnameable;
 
 import net.minecraft.world.IWorldNameable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
-import org.cyclops.commoncapabilities.api.capability.work.DefaultWorker;
-import org.cyclops.commoncapabilities.api.capability.work.IWorker;
 import org.cyclops.commoncapabilities.api.capability.worldnameable.DefaultWorldNameable;
-import org.cyclops.commoncapabilities.capability.worldnameable.WorldNameableCapabilityStorage;
 import org.cyclops.commoncapabilities.core.config.extendedconfig.CapabilityConfig;
-import org.cyclops.cyclopscore.modcompat.capabilities.DefaultCapabilityStorage;
 
 /**
  * Config for the world nameable capability.

@@ -8,15 +8,13 @@ import net.darkhax.tesla.api.ITeslaConsumer;
 import net.darkhax.tesla.api.ITeslaHolder;
 import net.darkhax.tesla.api.ITeslaProducer;
 import net.darkhax.tesla.capability.TeslaCapabilities;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.cyclops.commoncapabilities.CommonCapabilities;
-import org.cyclops.cyclopscore.modcompat.capabilities.CapabilityConstructorRegistry;
-import org.cyclops.cyclopscore.modcompat.capabilities.DefaultCapabilityProvider;
-import org.cyclops.cyclopscore.modcompat.capabilities.DefaultSidedCapabilityProvider;
-import org.cyclops.cyclopscore.modcompat.capabilities.ICapabilityConstructor;
+import org.cyclops.cyclopscore.modcompat.capabilities.*;
 
 import javax.annotation.Nullable;
 
@@ -31,7 +29,7 @@ public class RfTeslaIntegration {
 
         // Tiles
         registry.registerInheritableTile(IEnergyHandler.class,
-                new ICapabilityConstructor<ITeslaHolder, IEnergyHandler>() {
+                new SimpleCapabilityConstructor<ITeslaHolder, IEnergyHandler>() {
                     @Override
                     public Capability<ITeslaHolder> getCapability() {
                         return TeslaCapabilities.CAPABILITY_HOLDER;
@@ -51,7 +49,7 @@ public class RfTeslaIntegration {
                     }
                 });
         registry.registerInheritableTile(IEnergyProvider.class,
-                new ICapabilityConstructor<ITeslaProducer, IEnergyProvider>() {
+                new SimpleCapabilityConstructor<ITeslaProducer, IEnergyProvider>() {
                     @Override
                     public Capability<ITeslaProducer> getCapability() {
                         return TeslaCapabilities.CAPABILITY_PRODUCER;
@@ -71,7 +69,7 @@ public class RfTeslaIntegration {
                     }
                 });
         registry.registerInheritableTile(IEnergyReceiver.class,
-                new ICapabilityConstructor<ITeslaConsumer, IEnergyReceiver>() {
+                new SimpleCapabilityConstructor<ITeslaConsumer, IEnergyReceiver>() {
                     @Override
                     public Capability<ITeslaConsumer> getCapability() {
                         return TeslaCapabilities.CAPABILITY_CONSUMER;
@@ -93,7 +91,7 @@ public class RfTeslaIntegration {
 
         // Items
         registry.registerInheritableItem(IEnergyContainerItem.class,
-                new ICapabilityConstructor<ITeslaHolder, ItemStack>() {
+                new ICapabilityConstructor<ITeslaHolder, Item, ItemStack>() {
                     @Override
                     public Capability<ITeslaHolder> getCapability() {
                         return TeslaCapabilities.CAPABILITY_HOLDER;
@@ -101,13 +99,13 @@ public class RfTeslaIntegration {
 
                     @Nullable
                     @Override
-                    public ICapabilityProvider createProvider(final ItemStack host) {
+                    public ICapabilityProvider createProvider(Item hostType, final ItemStack host) {
                         return new DefaultCapabilityProvider<>(TeslaCapabilities.CAPABILITY_HOLDER,
                                 new HolderEnergyContainerItem(host));
                     }
                 });
         registry.registerInheritableItem(IEnergyContainerItem.class,
-                new ICapabilityConstructor<ITeslaProducer, ItemStack>() {
+                new ICapabilityConstructor<ITeslaProducer, Item, ItemStack>() {
                     @Override
                     public Capability<ITeslaProducer> getCapability() {
                         return TeslaCapabilities.CAPABILITY_PRODUCER;
@@ -115,13 +113,13 @@ public class RfTeslaIntegration {
 
                     @Nullable
                     @Override
-                    public ICapabilityProvider createProvider(final ItemStack host) {
+                    public ICapabilityProvider createProvider(Item hostType, final ItemStack host) {
                         return new DefaultCapabilityProvider<>(TeslaCapabilities.CAPABILITY_PRODUCER,
                                 new ProducerEnergyContainerItem(host));
                     }
                 });
         registry.registerInheritableItem(IEnergyContainerItem.class,
-                new ICapabilityConstructor<ITeslaConsumer, ItemStack>() {
+                new ICapabilityConstructor<ITeslaConsumer, Item, ItemStack>() {
                     @Override
                     public Capability<ITeslaConsumer> getCapability() {
                         return TeslaCapabilities.CAPABILITY_CONSUMER;
@@ -129,7 +127,7 @@ public class RfTeslaIntegration {
 
                     @Nullable
                     @Override
-                    public ICapabilityProvider createProvider(final ItemStack host) {
+                    public ICapabilityProvider createProvider(Item hostType, final ItemStack host) {
                         return new DefaultCapabilityProvider<>(TeslaCapabilities.CAPABILITY_CONSUMER,
                                 new ConsumerEnergyContainerItem(host));
                     }

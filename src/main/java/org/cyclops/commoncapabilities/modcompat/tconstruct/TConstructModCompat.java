@@ -11,7 +11,7 @@ import org.cyclops.commoncapabilities.modcompat.tconstruct.capability.work.TileS
 import org.cyclops.cyclopscore.modcompat.IModCompat;
 import org.cyclops.cyclopscore.modcompat.capabilities.CapabilityConstructorRegistry;
 import org.cyclops.cyclopscore.modcompat.capabilities.DefaultCapabilityProvider;
-import org.cyclops.cyclopscore.modcompat.capabilities.ICapabilityConstructor;
+import org.cyclops.cyclopscore.modcompat.capabilities.SimpleCapabilityConstructor;
 import slimeknights.tconstruct.smeltery.tileentity.TileCastingBasin;
 import slimeknights.tconstruct.smeltery.tileentity.TileCastingTable;
 import slimeknights.tconstruct.smeltery.tileentity.TileSmeltery;
@@ -44,7 +44,7 @@ public class TConstructModCompat implements IModCompat {
             CapabilityConstructorRegistry registry = CommonCapabilities._instance.getCapabilityConstructorRegistry();
             // Worker
             registry.registerTile(TileSmeltery.class,
-                    new ICapabilityConstructor<IWorker, TileSmeltery>() {
+                    new SimpleCapabilityConstructor<IWorker, TileSmeltery>() {
                         @Override
                         public Capability<IWorker> getCapability() {
                             return WorkerConfig.CAPABILITY;
@@ -57,7 +57,7 @@ public class TConstructModCompat implements IModCompat {
                         }
                     });
             registry.registerTile(TileCastingTable.class,
-                    new ICapabilityConstructor<IWorker, TileCastingTable>() {
+                    new SimpleCapabilityConstructor<IWorker, TileCastingTable>() {
                         @Override
                         public Capability<IWorker> getCapability() {
                             return WorkerConfig.CAPABILITY;
@@ -70,7 +70,7 @@ public class TConstructModCompat implements IModCompat {
                         }
                     });
             registry.registerTile(TileCastingBasin.class,
-                    new ICapabilityConstructor<IWorker, TileCastingBasin>() {
+                    new SimpleCapabilityConstructor<IWorker, TileCastingBasin>() {
                         @Override
                         public Capability<IWorker> getCapability() {
                             return WorkerConfig.CAPABILITY;

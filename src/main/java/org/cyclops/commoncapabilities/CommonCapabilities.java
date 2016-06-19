@@ -8,7 +8,8 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import org.apache.logging.log4j.Level;
 import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
-import org.cyclops.commoncapabilities.capability.worker.WorldNameableConfig;
+import org.cyclops.commoncapabilities.capability.worldnameable.WorldNameableConfig;
+import org.cyclops.commoncapabilities.capability.wrench.WrenchConfig;
 import org.cyclops.commoncapabilities.modcompat.enderio.EnderIOModCompat;
 import org.cyclops.commoncapabilities.modcompat.rf.RfApiCompat;
 import org.cyclops.commoncapabilities.modcompat.tconstruct.TConstructModCompat;
@@ -140,6 +141,7 @@ public class CommonCapabilities extends ModBaseVersionable {
         super.onMainConfigsRegister(configHandler);
         configHandler.add(new WorkerConfig());
         configHandler.add(new WorldNameableConfig());
+        configHandler.add(new WrenchConfig());
     }
 
     @Override
