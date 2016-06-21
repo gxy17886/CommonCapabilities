@@ -12,11 +12,14 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.cyclops.commoncapabilities.CommonCapabilities;
 import org.cyclops.commoncapabilities.Reference;
+import org.cyclops.commoncapabilities.api.capability.temperature.ITemperature;
 import org.cyclops.commoncapabilities.api.capability.work.IWorker;
+import org.cyclops.commoncapabilities.capability.temperature.TemperatureConfig;
 import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
 import org.cyclops.commoncapabilities.capability.worldnameable.EntityLivingWorldNameable;
 import org.cyclops.commoncapabilities.capability.worldnameable.ItemStackWorldNameable;
 import org.cyclops.commoncapabilities.capability.worldnameable.WorldNameableConfig;
+import org.cyclops.commoncapabilities.modcompat.vanilla.capability.temperature.VanillaFurnaceTemperature;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.work.VanillaBrewingStandWorker;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.work.VanillaFurnaceWorker;
 import org.cyclops.cyclopscore.modcompat.IModCompat;
@@ -128,6 +131,21 @@ public class VanillaModCompat implements IModCompat {
                                 return new DefaultCapabilityProvider<>(WorldNameableConfig.CAPABILITY, new ItemStackWorldNameable(host));
                             }
                             return null;
+                        }
+                    });
+
+            // Temperature
+            registry.registerTile(TileEntityFurnace.class,
+                    new SimpleCapabilityConstructor<ITemperature, TileEntityFurnace>() {
+                        @Override
+                        public Capability<ITemperature> getCapability() {
+                            return TemperatureConfig.CAPABILITY;
+                        }
+
+                        @Nullable
+                        @Override
+                        public ICapabilityProvider createProvider(TileEntityFurnace host) {
+                            return new DefaultCapabilityProvider<>(TemperatureConfig.CAPABILITY, new VanillaFurnaceTemperature(host));
                         }
                     });
         }
