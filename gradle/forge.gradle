@@ -38,7 +38,7 @@ dependencies {
     deobfCompile "slimeknights:TConstruct:${config.minecraft_version}-${config.tconstruct_version}" // http://dvs1.progwml6.com/files/maven/slimeknights/TConstruct/maven-metadata.xml
 
     // Project lombok
-    compile "org.projectlombok:lombok:1.14.4"
+    provided "org.projectlombok:lombok:1.14.4"
 }
 
 
