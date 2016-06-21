@@ -1,21 +1,27 @@
 package org.cyclops.commoncapabilities.modcompat.forestry.capability;
 
 import forestry.core.config.Constants;
+import forestry.core.items.ItemWrench;
 import forestry.core.tiles.TileEngine;
 import forestry.energy.tiles.TileEngineBiogas;
 import forestry.energy.tiles.TileEngineClockwork;
 import forestry.energy.tiles.TileEngineElectric;
 import forestry.energy.tiles.TileEnginePeat;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.cyclops.commoncapabilities.CommonCapabilities;
 import org.cyclops.commoncapabilities.Reference;
 import org.cyclops.commoncapabilities.api.capability.temperature.ITemperature;
+import org.cyclops.commoncapabilities.api.capability.wrench.DefaultWrench;
+import org.cyclops.commoncapabilities.api.capability.wrench.IWrench;
 import org.cyclops.commoncapabilities.capability.temperature.TemperatureConfig;
+import org.cyclops.commoncapabilities.capability.wrench.WrenchConfig;
 import org.cyclops.commoncapabilities.modcompat.forestry.capability.temperature.TileEngineTemperature;
 import org.cyclops.cyclopscore.modcompat.IModCompat;
 import org.cyclops.cyclopscore.modcompat.capabilities.CapabilityConstructorRegistry;
 import org.cyclops.cyclopscore.modcompat.capabilities.DefaultCapabilityProvider;
+import org.cyclops.cyclopscore.modcompat.capabilities.ICapabilityConstructor;
 import org.cyclops.cyclopscore.modcompat.capabilities.SimpleCapabilityConstructor;
 
 import javax.annotation.Nullable;
@@ -49,6 +55,21 @@ public class ForestryModCompat implements IModCompat {
             registerEngineTemperature(registry, TileEngineClockwork.class, ITemperature.ZERO_CELCIUS + 300000);
             registerEngineTemperature(registry, TileEngineElectric.class, ITemperature.ZERO_CELCIUS + Constants.ENGINE_ELECTRIC_HEAT_MAX);
             registerEngineTemperature(registry, TileEnginePeat.class, ITemperature.ZERO_CELCIUS + Constants.ENGINE_COPPER_HEAT_MAX);
+
+            // Wrench
+            registry.registerItem(ItemWrench.class,
+                    new ICapabilityConstructor<IWrench, ItemWrench, ItemStack>() {
+                        @Override
+                        public Capability<IWrench> getCapability() {
+                            return WrenchConfig.CAPABILITY;
+                        }
+
+                        @Nullable
+                        @Override
+                        public ICapabilityProvider createProvider(ItemWrench hostType, final ItemStack host) {
+                            return new DefaultCapabilityProvider<>(WrenchConfig.CAPABILITY, new DefaultWrench());
+                        }
+                    });
         }
     }
 
