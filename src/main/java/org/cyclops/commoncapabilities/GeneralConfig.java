@@ -54,6 +54,18 @@ public class GeneralConfig extends DummyConfig {
     public static boolean versionChecker = true;
 
     /**
+     * If IC2 EU and Tesla compatibility needs to be enabled.
+     */
+    @ConfigurableProperty(category = ConfigurableTypeCategory.CORE, comment = "If IC2 EU and Tesla compatibility needs to be enabled.")
+    public static boolean ic2EuToTesla = true;
+
+    /**
+     * The factor to multiply with for conversion EU to Tesla(=RF).
+     */
+    @ConfigurableProperty(category = ConfigurableTypeCategory.CORE, comment = "The factor to multiply with for conversion EU to Tesla(=RF).")
+    public static double euToTeslaRate = 4;
+
+    /**
      * The type of this config.
      */
     public static ConfigurableType TYPE = ConfigurableType.DUMMY;

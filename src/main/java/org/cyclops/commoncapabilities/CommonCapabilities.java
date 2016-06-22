@@ -13,6 +13,7 @@ import org.cyclops.commoncapabilities.capability.worldnameable.WorldNameableConf
 import org.cyclops.commoncapabilities.capability.wrench.WrenchConfig;
 import org.cyclops.commoncapabilities.modcompat.enderio.EnderIOModCompat;
 import org.cyclops.commoncapabilities.modcompat.forestry.capability.ForestryModCompat;
+import org.cyclops.commoncapabilities.modcompat.ic2.Ic2ModCompat;
 import org.cyclops.commoncapabilities.modcompat.rf.RfApiCompat;
 import org.cyclops.commoncapabilities.modcompat.tconstruct.TConstructModCompat;
 import org.cyclops.commoncapabilities.modcompat.vanilla.VanillaModCompat;
@@ -67,6 +68,7 @@ public class CommonCapabilities extends ModBaseVersionable {
         modCompatLoader.addModCompat(new EnderIOModCompat());
         modCompatLoader.addModCompat(new TConstructModCompat());
         modCompatLoader.addModCompat(new ForestryModCompat());
+        modCompatLoader.addModCompat(new Ic2ModCompat());
     }
 
     /**

@@ -42,6 +42,7 @@ public class Reference {
     public static final String MOD_ENDERIO = "EnderIO";
     public static final String MOD_TCONSTRUCT = "tconstruct";
     public static final String MOD_FORESTRY = "forestry";
+    public static final String MOD_IC2 = "IC2";
     
     // Dependencies
     public static final String MOD_DEPENDENCIES =

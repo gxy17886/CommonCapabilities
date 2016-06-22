@@ -45,7 +45,7 @@ public class TestCapabilityItemMod {
         if (itemStack != null && itemStack.hasCapability(TeslaCapabilities.CAPABILITY_PRODUCER, null)) {
             event.setCanceled(true);
             ITeslaProducer producer = itemStack.getCapability(TeslaCapabilities.CAPABILITY_PRODUCER, null);
-            System.out.println("Take 100: " + producer.takePower(1000, false));
+            System.out.println("Take 1000: " + producer.takePower(1000, false));
         }
     }
 
@@ -57,7 +57,7 @@ public class TestCapabilityItemMod {
         if (itemStack != null && itemStack.hasCapability(TeslaCapabilities.CAPABILITY_CONSUMER, null)) {
             event.setCanceled(true);
             ITeslaConsumer consumer = itemStack.getCapability(TeslaCapabilities.CAPABILITY_CONSUMER, null);
-            System.out.println("Give 100: " + consumer.givePower(1000, false));
+            System.out.println("Give 1000: " + consumer.givePower(1000, false));
         }
     }
 }
