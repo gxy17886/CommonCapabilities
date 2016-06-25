@@ -1,5 +1,6 @@
 package org.cyclops.commoncapabilities.modcompat.ic2;
 
+import ic2.api.reactor.IReactor;
 import ic2.core.item.tool.ItemToolWrench;
 import ic2.core.item.tool.ItemToolWrenchElectric;
 import net.minecraft.item.ItemStack;
@@ -9,14 +10,18 @@ import net.minecraftforge.fml.common.ModAPIManager;
 import org.cyclops.commoncapabilities.CommonCapabilities;
 import org.cyclops.commoncapabilities.GeneralConfig;
 import org.cyclops.commoncapabilities.Reference;
+import org.cyclops.commoncapabilities.api.capability.temperature.ITemperature;
 import org.cyclops.commoncapabilities.api.capability.wrench.DefaultWrench;
 import org.cyclops.commoncapabilities.api.capability.wrench.IWrench;
+import org.cyclops.commoncapabilities.capability.temperature.TemperatureConfig;
 import org.cyclops.commoncapabilities.capability.wrench.WrenchConfig;
+import org.cyclops.commoncapabilities.modcompat.ic2.capability.temperature.TileReactorTemperature;
 import org.cyclops.commoncapabilities.modcompat.ic2.capability.tesla.Ic2TeslaIntegration;
 import org.cyclops.cyclopscore.modcompat.IModCompat;
 import org.cyclops.cyclopscore.modcompat.capabilities.CapabilityConstructorRegistry;
 import org.cyclops.cyclopscore.modcompat.capabilities.DefaultCapabilityProvider;
 import org.cyclops.cyclopscore.modcompat.capabilities.ICapabilityConstructor;
+import org.cyclops.cyclopscore.modcompat.capabilities.SimpleCapabilityConstructor;
 
 import javax.annotation.Nullable;
 
@@ -37,7 +42,7 @@ public class Ic2ModCompat implements IModCompat {
 
     @Override
     public String getComment() {
-        return "Tesla and wrench capabilities for IC2 tiles and items.";
+        return "Tesla, temperature and wrench capabilities for IC2 tiles and items.";
     }
 
     @Override
@@ -71,6 +76,22 @@ public class Ic2ModCompat implements IModCompat {
                         @Override
                         public ICapabilityProvider createProvider(ItemToolWrench hostType, final ItemStack host) {
                             return new DefaultCapabilityProvider<>(WrenchConfig.CAPABILITY, new DefaultWrench());
+                        }
+                    });
+
+            // Temperature
+            registry.registerInheritableTile(IReactor.class,
+                    new SimpleCapabilityConstructor<ITemperature, IReactor>() {
+
+                        @Override
+                        public Capability<ITemperature> getCapability() {
+                            return TemperatureConfig.CAPABILITY;
+                        }
+
+                        @Nullable
+                        @Override
+                        public ICapabilityProvider createProvider(IReactor host) {
+                            return new DefaultCapabilityProvider<>(TemperatureConfig.CAPABILITY, new TileReactorTemperature(host));
                         }
                     });
         }
