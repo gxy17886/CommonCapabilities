@@ -3,7 +3,7 @@ package org.cyclops.commoncapabilities.modcompat.forestry.capability.work;
 import forestry.factory.tiles.TileMillRainmaker;
 import org.cyclops.commoncapabilities.api.capability.work.IWorker;
 import org.cyclops.commoncapabilities.core.Helpers;
-import org.cyclops.commoncapabilities.modcompat.forestry.capability.ForestryHelpers;
+import org.cyclops.commoncapabilities.modcompat.forestry.ForestryHelpers;
 
 /**
  * Worker capability for the TileMillRainmaker.

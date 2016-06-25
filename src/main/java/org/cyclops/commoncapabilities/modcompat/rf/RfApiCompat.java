@@ -2,6 +2,7 @@ package org.cyclops.commoncapabilities.modcompat.rf;
 
 import net.minecraftforge.fml.common.ModAPIManager;
 import org.cyclops.commoncapabilities.Reference;
+import org.cyclops.commoncapabilities.modcompat.rf.capability.tesla.RfTeslaIntegration;
 import org.cyclops.cyclopscore.modcompat.IApiCompat;
 
 /**

@@ -1,4 +1,4 @@
-package org.cyclops.commoncapabilities.modcompat.ic2;
+package org.cyclops.commoncapabilities.modcompat.ic2.capability.tesla;
 
 import ic2.api.item.IElectricItem;
 import ic2.api.tile.IEnergyStorage;
@@ -8,6 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.cyclops.commoncapabilities.CommonCapabilities;
+import org.cyclops.commoncapabilities.modcompat.ic2.capability.tesla.HolderProducerConsumerElectricItem;
+import org.cyclops.commoncapabilities.modcompat.ic2.capability.tesla.HolderProducerConsumerEnergyStorage;
 import org.cyclops.cyclopscore.modcompat.capabilities.CapabilityConstructorRegistry;
 import org.cyclops.cyclopscore.modcompat.capabilities.ICapabilityConstructor;
 import org.cyclops.cyclopscore.modcompat.capabilities.MultipleCapabilityProvider;

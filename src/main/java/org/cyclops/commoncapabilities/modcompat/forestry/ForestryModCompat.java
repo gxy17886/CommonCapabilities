@@ -1,4 +1,4 @@
-package org.cyclops.commoncapabilities.modcompat.forestry.capability;
+package org.cyclops.commoncapabilities.modcompat.forestry;
 
 import forestry.core.config.Constants;
 import forestry.core.items.ItemWrench;

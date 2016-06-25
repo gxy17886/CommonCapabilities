@@ -1,9 +1,10 @@
-package org.cyclops.commoncapabilities.modcompat.ic2;
+package org.cyclops.commoncapabilities.modcompat.ic2.capability.tesla;
 
 import ic2.api.tile.IEnergyStorage;
 import net.darkhax.tesla.api.ITeslaConsumer;
 import net.darkhax.tesla.api.ITeslaHolder;
 import net.darkhax.tesla.api.ITeslaProducer;
+import org.cyclops.commoncapabilities.modcompat.ic2.Ic2Helpers;
 
 /**
  * Tesla holder, producer and consumer for {@link IEnergyStorage}.

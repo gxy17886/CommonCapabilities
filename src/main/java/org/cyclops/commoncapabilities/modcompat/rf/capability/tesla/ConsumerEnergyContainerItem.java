@@ -1,4 +1,4 @@
-package org.cyclops.commoncapabilities.modcompat.rf;
+package org.cyclops.commoncapabilities.modcompat.rf.capability.tesla;
 
 import cofh.api.energy.IEnergyContainerItem;
 import net.darkhax.tesla.api.ITeslaConsumer;

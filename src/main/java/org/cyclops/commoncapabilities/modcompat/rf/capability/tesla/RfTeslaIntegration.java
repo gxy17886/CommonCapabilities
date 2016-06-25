@@ -1,4 +1,4 @@
-package org.cyclops.commoncapabilities.modcompat.rf;
+package org.cyclops.commoncapabilities.modcompat.rf.capability.tesla;
 
 import cofh.api.energy.IEnergyContainerItem;
 import cofh.api.energy.IEnergyHandler;
@@ -14,6 +14,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.cyclops.commoncapabilities.CommonCapabilities;
+import org.cyclops.commoncapabilities.modcompat.rf.capability.tesla.*;
 import org.cyclops.cyclopscore.modcompat.capabilities.*;
 
 import javax.annotation.Nullable;

@@ -3,6 +3,7 @@ package org.cyclops.commoncapabilities.modcompat.ic2;
 import net.minecraftforge.fml.common.ModAPIManager;
 import org.cyclops.commoncapabilities.GeneralConfig;
 import org.cyclops.commoncapabilities.Reference;
+import org.cyclops.commoncapabilities.modcompat.ic2.capability.tesla.Ic2TeslaIntegration;
 import org.cyclops.cyclopscore.modcompat.IModCompat;
 
 /**
