@@ -10,6 +10,7 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.IWorldNameable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.fluids.UniversalBucket;
 import org.cyclops.commoncapabilities.CommonCapabilities;
 import org.cyclops.commoncapabilities.Reference;
 import org.cyclops.commoncapabilities.api.capability.temperature.ITemperature;
@@ -20,6 +21,7 @@ import org.cyclops.commoncapabilities.capability.worldnameable.EntityLivingWorld
 import org.cyclops.commoncapabilities.capability.worldnameable.ItemStackWorldNameable;
 import org.cyclops.commoncapabilities.capability.worldnameable.WorldNameableConfig;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.temperature.VanillaFurnaceTemperature;
+import org.cyclops.commoncapabilities.modcompat.vanilla.capability.temperature.VanillaUniversalBucketTemperature;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.work.VanillaBrewingStandWorker;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.work.VanillaFurnaceWorker;
 import org.cyclops.cyclopscore.modcompat.IModCompat;
@@ -146,6 +148,18 @@ public class VanillaModCompat implements IModCompat {
                         @Override
                         public ICapabilityProvider createProvider(TileEntityFurnace host) {
                             return new DefaultCapabilityProvider<>(TemperatureConfig.CAPABILITY, new VanillaFurnaceTemperature(host));
+                        }
+                    });
+            registry.registerItem(UniversalBucket.class,
+                    new ICapabilityConstructor<ITemperature, UniversalBucket, ItemStack>() {
+                        @Override
+                        public Capability<ITemperature> getCapability() {
+                            return TemperatureConfig.CAPABILITY;
+                        }
+
+                        @Override
+                        public ICapabilityProvider createProvider(UniversalBucket hostType, ItemStack host) {
+                            return new DefaultCapabilityProvider<>(TemperatureConfig.CAPABILITY, new VanillaUniversalBucketTemperature(host));
                         }
                     });
         }

@@ -62,7 +62,7 @@ public class TestCapabilityWorldTemperatureMod {
     @SubscribeEvent
     public void onItemInteract(PlayerInteractEvent.RightClickItem event) {
         if (event.getItemStack() == null) return;
-        if (event.getItemStack().getItem() != Items.BEETROOT) return;
+        if (!event.getEntityPlayer().isSneaking()) return;
 
         ItemStack itemStack = event.getItemStack();
         if (itemStack.hasCapability(TemperatureConfig.CAPABILITY, null)) {
