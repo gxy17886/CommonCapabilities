@@ -14,6 +14,7 @@ import forestry.farming.tiles.TileFarmGearbox;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.fml.common.ModAPIManager;
 import org.cyclops.commoncapabilities.CommonCapabilities;
 import org.cyclops.commoncapabilities.Reference;
 import org.cyclops.commoncapabilities.api.capability.temperature.ITemperature;
@@ -24,6 +25,7 @@ import org.cyclops.commoncapabilities.capability.temperature.TemperatureConfig;
 import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
 import org.cyclops.commoncapabilities.capability.wrench.WrenchConfig;
 import org.cyclops.commoncapabilities.modcompat.forestry.capability.temperature.TileEngineTemperature;
+import org.cyclops.commoncapabilities.modcompat.forestry.capability.tesla.ForestryTeslaIntegration;
 import org.cyclops.commoncapabilities.modcompat.forestry.capability.work.*;
 import org.cyclops.cyclopscore.modcompat.IModCompat;
 import org.cyclops.cyclopscore.modcompat.capabilities.CapabilityConstructorRegistry;
@@ -56,6 +58,9 @@ public class ForestryModCompat implements IModCompat {
     @Override
     public void onInit(Step initStep) {
         if(initStep == Step.INIT) {
+            if (ModAPIManager.INSTANCE.hasAPI(Reference.MOD_TESLA_API)) {
+                ForestryTeslaIntegration.load();
+            }
             CapabilityConstructorRegistry registry = CommonCapabilities._instance.getCapabilityConstructorRegistry();
             // Temperature
             registerEngineTemperature(registry, TileEngineBiogas.class, ITemperature.ZERO_CELCIUS + Constants.ENGINE_BRONZE_HEAT_MAX);
