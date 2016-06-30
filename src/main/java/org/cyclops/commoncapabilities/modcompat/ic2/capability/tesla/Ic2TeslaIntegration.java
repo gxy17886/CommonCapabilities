@@ -54,12 +54,15 @@ public class Ic2TeslaIntegration {
                     @Nullable
                     @Override
                     public ICapabilityProvider createProvider(TileEntityBlock host) {
-                        HolderProducerConsumerBlock capabilityImplementation = new HolderProducerConsumerBlock(host);
-                        return MultipleCapabilityProvider.of(
-                                TeslaCapabilities.CAPABILITY_HOLDER, capabilityImplementation,
-                                TeslaCapabilities.CAPABILITY_PRODUCER, capabilityImplementation,
-                                TeslaCapabilities.CAPABILITY_CONSUMER, capabilityImplementation
-                        );
+                        if (!(host instanceof IEnergyStorage)) {
+                            HolderProducerConsumerBlock capabilityImplementation = new HolderProducerConsumerBlock(host);
+                            return MultipleCapabilityProvider.of(
+                                    TeslaCapabilities.CAPABILITY_HOLDER, capabilityImplementation,
+                                    TeslaCapabilities.CAPABILITY_PRODUCER, capabilityImplementation,
+                                    TeslaCapabilities.CAPABILITY_CONSUMER, capabilityImplementation
+                            );
+                        }
+                        return null;
                     }
                 });
 
