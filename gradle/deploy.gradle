@@ -5,6 +5,8 @@ curseforge {
         apiKey = project.curseforge_key
     } else if(System.getenv().TRAVIS) {
         apiKey = System.getenv().CURSEFORGE_KEY_SECRET
+    } else {
+        apiKey = "DUMMY"
     }
 
     project {
@@ -20,6 +22,9 @@ curseforge {
         if (new File("resources/changelog/${project.version}.txt").exists()) {
             changelog = new File("resources/changelog/${project.version}.txt").text
         }
+
+        addGameVersion '1.10'
+        addGameVersion '1.10.2'
 
         addArtifact deobfJar
         addArtifact sourceJar
