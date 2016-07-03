@@ -32,10 +32,10 @@ public class Reference {
     // MOD ID's
     public static final String MOD_FORGE = "Forge";
     public static final String MOD_FORGE_VERSION = "@FORGE_VERSION@";
-    public static final String MOD_FORGE_VERSION_MIN = "11.14.3.1494";
+    public static final String MOD_FORGE_VERSION_MIN = "12.17.0.1954";
     public static final String MOD_CYCLOPSCORE = "cyclopscore";
     public static final String MOD_CYCLOPSCORE_VERSION = "@CYCLOPSCORE_VERSION@";
-    public static final String MOD_CYCLOPSCORE_VERSION_MIN = "0.5.1";
+    public static final String MOD_CYCLOPSCORE_VERSION_MIN = "0.7.0";
     public static final String MOD_VANILLA = "Minecraft";
     public static final String MOD_RF_API = "CoFHAPI";
     public static final String MOD_TESLA_API = "Tesla|API";
