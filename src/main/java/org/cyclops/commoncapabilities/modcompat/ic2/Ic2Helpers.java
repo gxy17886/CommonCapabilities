@@ -3,7 +3,6 @@ package org.cyclops.commoncapabilities.modcompat.ic2;
 import ic2.core.block.generator.tileentity.*;
 import ic2.core.block.kineticgenerator.tileentity.TileEntitySteamKineticGenerator;
 import ic2.core.block.machine.tileentity.*;
-import org.cyclops.commoncapabilities.GeneralConfig;
 import org.cyclops.commoncapabilities.core.Helpers;
 
 import java.lang.reflect.Field;
@@ -42,14 +41,5 @@ public class Ic2Helpers {
     public static Field FIELD_TILESOLARDISTILLER_SKYLIGHT = Helpers.getField(TileEntitySolarDestiller.class, "skyLight");
 
     public static Field FIELD_TILECHUNKLOADER_LOADEDCHUNKS = Helpers.getField(TileEntityChunkloader.class, "loadedChunks");
-
-
-    public static double teslaToEu(long tesla) {
-        return tesla / GeneralConfig.euToTeslaRate;
-    }
-
-    public static long euToTesla(double eu) {
-        return (long) Math.floor(eu * GeneralConfig.euToTeslaRate);
-    }
 
 }

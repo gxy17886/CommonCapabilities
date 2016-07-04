@@ -14,9 +14,7 @@ import ic2.core.item.tool.ItemToolWrenchElectric;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.fml.common.ModAPIManager;
 import org.cyclops.commoncapabilities.CommonCapabilities;
-import org.cyclops.commoncapabilities.GeneralConfig;
 import org.cyclops.commoncapabilities.Reference;
 import org.cyclops.commoncapabilities.api.capability.temperature.ITemperature;
 import org.cyclops.commoncapabilities.api.capability.work.IWorker;
@@ -26,7 +24,6 @@ import org.cyclops.commoncapabilities.capability.temperature.TemperatureConfig;
 import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
 import org.cyclops.commoncapabilities.capability.wrench.WrenchConfig;
 import org.cyclops.commoncapabilities.modcompat.ic2.capability.temperature.TileReactorTemperature;
-import org.cyclops.commoncapabilities.modcompat.ic2.capability.tesla.Ic2TeslaIntegration;
 import org.cyclops.commoncapabilities.modcompat.ic2.capability.work.*;
 import org.cyclops.cyclopscore.modcompat.IModCompat;
 import org.cyclops.cyclopscore.modcompat.capabilities.CapabilityConstructorRegistry;
@@ -54,16 +51,12 @@ public class Ic2ModCompat implements IModCompat {
 
     @Override
     public String getComment() {
-        return "Tesla, temperature and wrench capabilities for IC2 tiles and items.";
+        return "Temperature and wrench capabilities for IC2 tiles and items.";
     }
 
     @Override
     public void onInit(Step initStep) {
         if (initStep == Step.PREINIT) {
-            if (ModAPIManager.INSTANCE.hasAPI(Reference.MOD_TESLA_API) && GeneralConfig.ic2EuToTesla) {
-                Ic2TeslaIntegration.load();
-            }
-
             CapabilityConstructorRegistry registry = CommonCapabilities._instance.getCapabilityConstructorRegistry();
 
             // Wrench

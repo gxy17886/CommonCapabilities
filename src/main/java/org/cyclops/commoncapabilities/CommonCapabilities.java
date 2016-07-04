@@ -15,7 +15,6 @@ import org.cyclops.commoncapabilities.modcompat.charset.CharsetWrenchModCompat;
 import org.cyclops.commoncapabilities.modcompat.enderio.EnderIOModCompat;
 import org.cyclops.commoncapabilities.modcompat.forestry.ForestryModCompat;
 import org.cyclops.commoncapabilities.modcompat.ic2.Ic2ModCompat;
-import org.cyclops.commoncapabilities.modcompat.rf.RfApiCompat;
 import org.cyclops.commoncapabilities.modcompat.tconstruct.TConstructModCompat;
 import org.cyclops.commoncapabilities.modcompat.vanilla.VanillaModCompat;
 import org.cyclops.cyclopscore.config.ConfigHandler;
@@ -65,7 +64,6 @@ public class CommonCapabilities extends ModBaseVersionable {
     protected void loadModCompats(ModCompatLoader modCompatLoader) {
         super.loadModCompats(modCompatLoader);
         modCompatLoader.addModCompat(new VanillaModCompat());
-        modCompatLoader.addApiCompat(new RfApiCompat());
         modCompatLoader.addModCompat(new EnderIOModCompat());
         modCompatLoader.addModCompat(new TConstructModCompat());
         modCompatLoader.addModCompat(new ForestryModCompat());
