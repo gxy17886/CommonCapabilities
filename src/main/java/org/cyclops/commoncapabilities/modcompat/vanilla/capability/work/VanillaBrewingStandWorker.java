@@ -29,6 +29,6 @@ public class VanillaBrewingStandWorker implements IWorker {
 
     @Override
     public boolean canWork() {
-        return true; // This will become an indicator of the blaze powder in 1.9
+        return brewingStand.getField(1) > 0;
     }
 }
