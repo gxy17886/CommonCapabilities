@@ -3,8 +3,9 @@ package org.cyclops.commoncapabilities.capability.worldnameable;
 import net.minecraft.world.IWorldNameable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
+import org.cyclops.commoncapabilities.CommonCapabilities;
 import org.cyclops.commoncapabilities.api.capability.worldnameable.DefaultWorldNameable;
-import org.cyclops.commoncapabilities.core.config.extendedconfig.CapabilityConfig;
+import org.cyclops.cyclopscore.config.extendedconfig.CapabilityConfig;
 
 /**
  * Config for the world nameable capability.
@@ -26,6 +27,7 @@ public class WorldNameableConfig extends CapabilityConfig {
      */
     public WorldNameableConfig() {
         super(
+                CommonCapabilities._instance,
                 true,
                 "worldNameable",
                 "Naming of tiles, entities and items",

@@ -2,9 +2,10 @@ package org.cyclops.commoncapabilities.capability.worker;
 
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
+import org.cyclops.commoncapabilities.CommonCapabilities;
 import org.cyclops.commoncapabilities.api.capability.work.DefaultWorker;
 import org.cyclops.commoncapabilities.api.capability.work.IWorker;
-import org.cyclops.commoncapabilities.core.config.extendedconfig.CapabilityConfig;
+import org.cyclops.cyclopscore.config.extendedconfig.CapabilityConfig;
 import org.cyclops.cyclopscore.modcompat.capabilities.DefaultCapabilityStorage;
 
 /**
@@ -27,6 +28,7 @@ public class WorkerConfig extends CapabilityConfig {
      */
     public WorkerConfig() {
         super(
+                CommonCapabilities._instance,
                 true,
                 "worker",
                 "Indication if a machine is working",

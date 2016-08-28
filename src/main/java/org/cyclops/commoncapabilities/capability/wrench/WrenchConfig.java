@@ -3,9 +3,10 @@ package org.cyclops.commoncapabilities.capability.wrench;
 import net.minecraft.world.IWorldNameable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
+import org.cyclops.commoncapabilities.CommonCapabilities;
 import org.cyclops.commoncapabilities.api.capability.wrench.DefaultWrench;
 import org.cyclops.commoncapabilities.api.capability.wrench.IWrench;
-import org.cyclops.commoncapabilities.core.config.extendedconfig.CapabilityConfig;
+import org.cyclops.cyclopscore.config.extendedconfig.CapabilityConfig;
 import org.cyclops.cyclopscore.modcompat.capabilities.DefaultCapabilityStorage;
 
 /**
@@ -28,6 +29,7 @@ public class WrenchConfig extends CapabilityConfig {
      */
     public WrenchConfig() {
         super(
+                CommonCapabilities._instance,
                 true,
                 "wrench",
                 "Indicates if something is a wrench",
