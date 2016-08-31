@@ -1,0 +1,6 @@
+As always, don't forget to backup your world before updating!
+Requires CyclopsCore version 0.7.7 or higher.
+
+Changes:
+* Use CyclopsCore's ConfigurableCapability
+* Remove Tesla references. Forestry now has native support, and the test classes have been moved to Energy Synergy.
