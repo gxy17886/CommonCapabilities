@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import org.apache.logging.log4j.Level;
+import org.cyclops.commoncapabilities.capability.inventorystate.InventoryStateConfig;
 import org.cyclops.commoncapabilities.capability.temperature.TemperatureConfig;
 import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
 import org.cyclops.commoncapabilities.capability.worldnameable.WorldNameableConfig;
@@ -148,6 +149,7 @@ public class CommonCapabilities extends ModBaseVersionable {
         configHandler.add(new WorldNameableConfig());
         configHandler.add(new WrenchConfig());
         configHandler.add(new TemperatureConfig());
+        configHandler.add(new InventoryStateConfig());
     }
 
     @Override
