@@ -1,6 +1,6 @@
 ## CommonCapabilities
 
-[![Build Status](https://travis-ci.org/CyclopsMC/CommonCapabilities.svg?branch=master-1.8)](https://travis-ci.org/CyclopsMC/CommonCapabilities)
+[![Build Status](https://travis-ci.org/CyclopsMC/CommonCapabilities.svg?branch=master-1.9)](https://travis-ci.org/CyclopsMC/CommonCapabilities)
 [![Download](https://api.bintray.com/packages/cyclopsmc/dev/CommonCapabilities/images/download.svg) ](https://bintray.com/cyclopsmc/dev/CommonCapabilities/_latestVersion)
 
 Forge Capabilities that can be shared by multiple mods.
