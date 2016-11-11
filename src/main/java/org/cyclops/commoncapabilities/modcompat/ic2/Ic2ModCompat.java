@@ -57,6 +57,15 @@ public class Ic2ModCompat implements IModCompat {
     @Override
     public void onInit(Step initStep) {
         if (initStep == Step.PREINIT) {
+            // Don't crash when IC2Classic is loaded.
+            // Because it shares the same main mod id with IC2Exp
+            // https://github.com/CyclopsMC/CyclopsCore/issues/28
+            try {
+                Class.forName("ic2.core.item.tool.ItemToolWrenchElectric");
+            } catch (ClassNotFoundException e) {
+                return;
+            }
+
             CapabilityConstructorRegistry registry = CommonCapabilities._instance.getCapabilityConstructorRegistry();
 
             // Wrench
