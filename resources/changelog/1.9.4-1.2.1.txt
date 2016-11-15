@@ -1,0 +1,5 @@
+As always, don't forget to backup your world before updating!
+Requires CyclopsCore version 0.8.0 or higher.
+
+Fixes:
+* Fix crash with IC2Classic, Closes CyclopsMC/CyclopsCore#28
