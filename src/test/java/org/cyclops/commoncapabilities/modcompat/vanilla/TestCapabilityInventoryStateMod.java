@@ -27,7 +27,7 @@ public class TestCapabilityInventoryStateMod {
 
     @SubscribeEvent
     public void onTileInteract(PlayerInteractEvent.LeftClickBlock event) {
-        if (event.getItemStack() == null) return;
+        if (event.getItemStack().isEmpty()) return;
         if (event.getItemStack().getItem() != Items.ARROW) return;
 
         TileEntity te = event.getWorld().getTileEntity(event.getPos());
@@ -41,7 +41,7 @@ public class TestCapabilityInventoryStateMod {
     @SubscribeEvent
     public void onEntityInteract(AttackEntityEvent event) {
         if (event.getEntityPlayer() == null) return;
-        if (event.getEntityPlayer().getHeldItemMainhand() == null) return;
+        if (event.getEntityPlayer().getHeldItemMainhand().isEmpty()) return;
         if (event.getEntityPlayer().getHeldItemMainhand().getItem() != Items.ARROW) return;
 
         Entity target = event.getTarget();
@@ -54,7 +54,7 @@ public class TestCapabilityInventoryStateMod {
 
     @SubscribeEvent
     public void onItemInteract(PlayerInteractEvent.RightClickItem event) {
-        if (event.getItemStack() == null) return;
+        if (event.getItemStack().isEmpty()) return;
         if (event.getItemStack().getItem() != Items.ARROW) return;
 
         ItemStack itemStack = event.getItemStack();

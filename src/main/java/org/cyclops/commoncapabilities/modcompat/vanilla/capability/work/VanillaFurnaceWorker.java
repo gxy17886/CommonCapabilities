@@ -19,7 +19,7 @@ public class VanillaFurnaceWorker implements IWorker {
     @Override
     public boolean hasWork() {
         ItemStack toMelt = furnace.getStackInSlot(0);
-        return toMelt != null && FurnaceRecipes.instance().getSmeltingResult(toMelt) != null;
+        return !toMelt.isEmpty() && !FurnaceRecipes.instance().getSmeltingResult(toMelt).isEmpty();
     }
 
     @Override

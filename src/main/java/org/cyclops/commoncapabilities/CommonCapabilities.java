@@ -12,11 +12,6 @@ import org.cyclops.commoncapabilities.capability.temperature.TemperatureConfig;
 import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
 import org.cyclops.commoncapabilities.capability.worldnameable.WorldNameableConfig;
 import org.cyclops.commoncapabilities.capability.wrench.WrenchConfig;
-import org.cyclops.commoncapabilities.modcompat.charset.CharsetWrenchModCompat;
-import org.cyclops.commoncapabilities.modcompat.enderio.EnderIOModCompat;
-import org.cyclops.commoncapabilities.modcompat.forestry.ForestryModCompat;
-import org.cyclops.commoncapabilities.modcompat.ic2.Ic2ModCompat;
-import org.cyclops.commoncapabilities.modcompat.tconstruct.TConstructModCompat;
 import org.cyclops.commoncapabilities.modcompat.vanilla.VanillaModCompat;
 import org.cyclops.cyclopscore.config.ConfigHandler;
 import org.cyclops.cyclopscore.init.ModBaseVersionable;
@@ -65,11 +60,12 @@ public class CommonCapabilities extends ModBaseVersionable {
     protected void loadModCompats(ModCompatLoader modCompatLoader) {
         super.loadModCompats(modCompatLoader);
         modCompatLoader.addModCompat(new VanillaModCompat());
-        modCompatLoader.addModCompat(new EnderIOModCompat());
-        modCompatLoader.addModCompat(new TConstructModCompat());
-        modCompatLoader.addModCompat(new ForestryModCompat());
-        modCompatLoader.addModCompat(new Ic2ModCompat());
-        modCompatLoader.addModCompat(new CharsetWrenchModCompat());
+        // TODO: temporarily disable some mod compats
+        //modCompatLoader.addModCompat(new EnderIOModCompat());
+        //modCompatLoader.addModCompat(new TConstructModCompat());
+        //modCompatLoader.addModCompat(new ForestryModCompat());
+        //modCompatLoader.addModCompat(new Ic2ModCompat());
+        //modCompatLoader.addModCompat(new CharsetWrenchModCompat());
     }
 
     /**

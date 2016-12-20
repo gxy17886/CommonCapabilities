@@ -24,7 +24,7 @@ public class TestCapabilityWorkerMod {
 
     @SubscribeEvent
     public void onInteract(PlayerInteractEvent.LeftClickBlock event) {
-        if (event.getItemStack() == null) return;
+        if (event.getItemStack().isEmpty()) return;
         if (event.getItemStack().getItem() != Items.BLAZE_ROD) return;
 
         TileEntity te = event.getWorld().getTileEntity(event.getPos());

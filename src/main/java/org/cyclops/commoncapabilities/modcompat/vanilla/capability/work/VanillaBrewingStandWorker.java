@@ -2,6 +2,7 @@ package org.cyclops.commoncapabilities.modcompat.vanilla.capability.work;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityBrewingStand;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import org.cyclops.commoncapabilities.api.capability.work.IWorker;
 
@@ -20,9 +21,9 @@ public class VanillaBrewingStandWorker implements IWorker {
 
     @Override
     public boolean hasWork() {
-        ItemStack[] inputs = new ItemStack[outputSlots.length]; 
-        for (int i = 0; i < inputs.length; i++) {
-            inputs[i] = brewingStand.getStackInSlot(outputSlots[i]);
+        NonNullList<ItemStack> inputs = NonNullList.withSize(outputSlots.length, ItemStack.EMPTY);
+        for (int i = 0; i < inputs.size(); i++) {
+            inputs.set(i, brewingStand.getStackInSlot(outputSlots[i]));
         }
         return BrewingRecipeRegistry.canBrew(inputs, brewingStand.getStackInSlot(outputSlots.length), outputSlots);
     }

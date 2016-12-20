@@ -58,7 +58,7 @@ public class TestCapabilityWrenchMod {
 
     @SubscribeEvent
     public void onInteract(PlayerInteractEvent.RightClickBlock event) {
-        if (event.getItemStack() == null) return;
+        if (event.getItemStack().isEmpty()) return;
         if (!event.getItemStack().hasCapability(WrenchConfig.CAPABILITY, null)) return;
 
         System.out.println("wrenched!");
