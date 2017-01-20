@@ -8,9 +8,9 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import org.apache.logging.log4j.Level;
 import org.cyclops.commoncapabilities.capability.inventorystate.InventoryStateConfig;
+import org.cyclops.commoncapabilities.capability.itemhandler.SlotlessItemHandlerConfig;
 import org.cyclops.commoncapabilities.capability.temperature.TemperatureConfig;
 import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
-import org.cyclops.commoncapabilities.capability.worldnameable.WorldNameableConfig;
 import org.cyclops.commoncapabilities.capability.wrench.WrenchConfig;
 import org.cyclops.commoncapabilities.modcompat.vanilla.VanillaModCompat;
 import org.cyclops.cyclopscore.config.ConfigHandler;
@@ -142,10 +142,10 @@ public class CommonCapabilities extends ModBaseVersionable {
     public void onMainConfigsRegister(ConfigHandler configHandler) {
         super.onMainConfigsRegister(configHandler);
         configHandler.add(new WorkerConfig());
-        configHandler.add(new WorldNameableConfig());
         configHandler.add(new WrenchConfig());
         configHandler.add(new TemperatureConfig());
         configHandler.add(new InventoryStateConfig());
+        configHandler.add(new SlotlessItemHandlerConfig());
     }
 
     @Override
