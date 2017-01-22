@@ -35,7 +35,7 @@ public class Reference {
     public static final String MOD_FORGE_VERSION_MIN = "12.17.0.1954";
     public static final String MOD_CYCLOPSCORE = "cyclopscore";
     public static final String MOD_CYCLOPSCORE_VERSION = "@CYCLOPSCORE_VERSION@";
-    public static final String MOD_CYCLOPSCORE_VERSION_MIN = "0.9.0";
+    public static final String MOD_CYCLOPSCORE_VERSION_MIN = "0.9.1";
     public static final String MOD_VANILLA = "Minecraft";
     public static final String MOD_RF_API = "CoFHAPI";
     public static final String MOD_ENDERIO = "EnderIO";
