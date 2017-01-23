@@ -23,6 +23,6 @@ public class TileWindKineticGeneratorWorker implements IWorker {
     @Override
     public boolean canWork() {
         return host.getActive() || (host.getWindStrength() >= host.getMinWindStrength()
-                && host.getWindStrength() <= host.getMaxWindStrength() && host.checkrotor() && host.rotorspace());
+                && host.getWindStrength() <= host.getMaxWindStrength() && host.hasRotor() && host.rotorHasSpace());
     }
 }
