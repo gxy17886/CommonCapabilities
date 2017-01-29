@@ -68,7 +68,6 @@ idea {
 sourceSets {
     main {
         java {
-            exclude '**/modcompat/charset/**'
             exclude '**/modcompat/enderio/**'
             exclude '**/modcompat/ic2/**'
             exclude '**/modcompat/tconstruct/**'
