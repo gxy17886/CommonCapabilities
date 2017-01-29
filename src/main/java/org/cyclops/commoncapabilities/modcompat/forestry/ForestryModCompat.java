@@ -7,7 +7,6 @@ import forestry.core.tiles.TileEngine;
 import forestry.core.tiles.TilePowered;
 import forestry.energy.tiles.TileEngineBiogas;
 import forestry.energy.tiles.TileEngineClockwork;
-import forestry.energy.tiles.TileEngineElectric;
 import forestry.energy.tiles.TileEnginePeat;
 import forestry.factory.tiles.*;
 import forestry.farming.tiles.TileFarmGearbox;
@@ -60,7 +59,8 @@ public class ForestryModCompat implements IModCompat {
             // Temperature
             registerEngineTemperature(registry, TileEngineBiogas.class, ITemperature.ZERO_CELCIUS + Constants.ENGINE_BRONZE_HEAT_MAX);
             registerEngineTemperature(registry, TileEngineClockwork.class, ITemperature.ZERO_CELCIUS + 300000);
-            registerEngineTemperature(registry, TileEngineElectric.class, ITemperature.ZERO_CELCIUS + Constants.ENGINE_ELECTRIC_HEAT_MAX);
+            // TODO: re-enable when IC2 is back in 1.11
+            //registerEngineTemperature(registry, TileEngineElectric.class, ITemperature.ZERO_CELCIUS + Constants.ENGINE_ELECTRIC_HEAT_MAX);
             registerEngineTemperature(registry, TileEnginePeat.class, ITemperature.ZERO_CELCIUS + Constants.ENGINE_COPPER_HEAT_MAX);
 
             // Wrench
@@ -90,7 +90,8 @@ public class ForestryModCompat implements IModCompat {
 
             registerTileEngineWorker(registry, TileEngineBiogas.class);
             registerTileEngineWorker(registry, TileEngineClockwork.class);
-            registerTileEngineWorker(registry, TileEngineElectric.class);
+            // TODO: re-enable when IC2 is back in 1.11
+            //registerTileEngineWorker(registry, TileEngineElectric.class);
             registerTileEngineWorker(registry, TileEnginePeat.class);
 
             registry.registerTile(TileMoistener.class,
