@@ -16,6 +16,25 @@ All stable releases (including deobfuscated builds) can be found on [CurseForge]
 * All code must comply to our coding conventions, be clean and must be well documented.
 * All capabilities for mods must be tested in a separate test mod, in the `src/test/java/` directory. 
 
+### Dependency
+
+Instead of adding the [CommonCapabilities API as a git submodule](https://github.com/CyclopsMC/CommonCapabilitiesAPI#using-the-api), you can also add this mod as a dependency to your `build.gradle` file:
+
+```gradle
+repositories {
+  maven {
+    name "Cyclops Repo"
+    url "https://dl.bintray.com/cyclopsmc/dev/"
+  }
+}
+
+dependencies {
+  deobfCompile "org.cyclops.commoncapabilities:CommonCapabilities:${mc_version}-${mod_version}"
+}
+```
+
+All available versions can be found at the [Maven repo](https://dl.bintray.com/cyclopsmc/dev/org/cyclops/commoncapabilities/CommonCapabilities/).
+
 ### Issues
 * All bug reports and other issues are appreciated. If the issue is a crash, please include the FULL Forge log.
 * Before submission, first check for duplicates, including already closed issues since those can then be re-opened.
