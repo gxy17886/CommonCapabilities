@@ -32,7 +32,7 @@ public class Reference {
     // MOD ID's
     public static final String MOD_FORGE = "forge";
     public static final String MOD_FORGE_VERSION = "@FORGE_VERSION@";
-    public static final String MOD_FORGE_VERSION_MIN = "13.20.0.2201";
+    public static final String MOD_FORGE_VERSION_MIN = "13.20.0.2206";
     public static final String MOD_CYCLOPSCORE = "cyclopscore";
     public static final String MOD_CYCLOPSCORE_VERSION = "@CYCLOPSCORE_VERSION@";
     public static final String MOD_CYCLOPSCORE_VERSION_MIN = "0.9.2";
@@ -41,7 +41,7 @@ public class Reference {
     public static final String MOD_ENDERIO = "EnderIO";
     public static final String MOD_TCONSTRUCT = "tconstruct";
     public static final String MOD_FORESTRY = "forestry";
-    public static final String MOD_IC2 = "IC2";
+    public static final String MOD_IC2 = "ic2";
     public static final String MOD_CHARSET_WRENCH = "CharsetWrench";
     
     // Dependencies

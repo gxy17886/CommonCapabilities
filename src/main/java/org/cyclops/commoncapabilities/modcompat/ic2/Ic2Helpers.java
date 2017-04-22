@@ -22,6 +22,8 @@ public class Ic2Helpers {
 
     public static Method METHOD_TILEELETROLYZER_CANOPERATE = Helpers.getMethod(TileEntityElectrolyzer.class, "canOperate");
 
+    public static Method METHOD_TILESTANDARDMACHINE_GETOUTPUT = Helpers.getMethod(TileEntityStandardMachine.class, "getOutput");
+
     public static Field FIELD_TILEBASEGENERATOR_ENERGY = Helpers.getField(TileEntityBaseGenerator.class, "energy");
     public static Field FIELD_TILEBASEGENERATOR_PRODUCTION = Helpers.getField(TileEntityBaseGenerator.class, "production");
 
@@ -30,13 +32,12 @@ public class Ic2Helpers {
 
     public static Field FIELD_TILESTIRLINGGENERATOR_ENERGY = Helpers.getField(TileEntityStirlingGenerator.class, "energy");
     public static Field FIELD_TILESTIRLINGGENERATOR_PRODUCTION = Helpers.getField(TileEntityStirlingGenerator.class, "production");
-    public static Field FIELD_TILESEMIFLUIDGENERATOR_ENERGY = Helpers.getField(TileEntitySemifluidGenerator.class, "energy");
-    public static Field FIELD_TILESEMIFLUIDGENERATOR_PRODUCTION = Helpers.getField(TileEntitySemifluidGenerator.class, "production");
+    public static Field FIELD_TILESEMIFLUIDGENERATOR_FLUIDTANK = Helpers.getField(TileEntitySemifluidGenerator.class, "fluidTank");
     public static Field FIELD_TILEKINETICGENERATOR_ENERGY = Helpers.getField(TileEntityKineticGenerator.class, "energy");
     public static Field FIELD_TILEKINETICGENERATOR_PRODUCTION = Helpers.getField(TileEntityKineticGenerator.class, "production");
-    public static Field FIELD_TILEGEOGENERATOR_ENERGY = Helpers.getField(TileEntityGeoGenerator.class, "energy");
-    public static Field FIELD_TILEGEOGENERATOR_PRODUCTION = Helpers.getField(TileEntityGeoGenerator.class, "production");
+    public static Field FIELD_TILEGEOGENERATOR_FLUIDTANK = Helpers.getField(TileEntityGeoGenerator.class, "fluidTank");
     public static Field FIELD_TILEELECTRICMACHINE_ENERGY = Helpers.getField(TileEntityElectricMachine.class, "energy");
+    public static Field FIELD_TILESFLUIDDISTRIBUTOR_FLUIDTANK = Helpers.getField(TileEntityFluidDistributor.class, "fluidTank");
 
     public static Field FIELD_TILESOLARDISTILLER_SKYLIGHT = Helpers.getField(TileEntitySolarDestiller.class, "skyLight");
 

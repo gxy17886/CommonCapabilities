@@ -1,8 +1,7 @@
 package org.cyclops.commoncapabilities.modcompat.ic2.capability.work;
 
-import ic2.core.block.comp.Energy;
 import ic2.core.block.generator.tileentity.TileEntityGeoGenerator;
-import org.cyclops.commoncapabilities.api.capability.work.IWorker;
+import net.minecraftforge.fluids.FluidTank;
 import org.cyclops.commoncapabilities.core.Helpers;
 import org.cyclops.commoncapabilities.modcompat.ic2.Ic2Helpers;
 
@@ -10,23 +9,15 @@ import org.cyclops.commoncapabilities.modcompat.ic2.Ic2Helpers;
  * Worker capability for {@link TileEntityGeoGenerator}.
  * @author rubensworks
  */
-public class TileGeoGeneratorWorker implements IWorker {
-
-    private final TileEntityGeoGenerator host;
+public class TileGeoGeneratorWorker extends TileBaseGeneratorWorker<TileEntityGeoGenerator> {
 
     public TileGeoGeneratorWorker(TileEntityGeoGenerator host) {
-        this.host = host;
-    }
-
-    @Override
-    public boolean hasWork() {
-        Energy energy = Helpers.getFieldValue(host, Ic2Helpers.FIELD_TILEGEOGENERATOR_ENERGY);
-        int production = Helpers.getFieldValue(host, Ic2Helpers.FIELD_TILEGEOGENERATOR_PRODUCTION);
-        return energy.getEnergy() + production <= energy.getCapacity();
+        super(host);
     }
 
     @Override
     public boolean canWork() {
-        return host.getTankAmount() >= 2;
+        FluidTank fluidTank = Helpers.getFieldValue(getTile(), Ic2Helpers.FIELD_TILEGEOGENERATOR_FLUIDTANK);
+        return fluidTank.getFluidAmount() > 2;
     }
 }

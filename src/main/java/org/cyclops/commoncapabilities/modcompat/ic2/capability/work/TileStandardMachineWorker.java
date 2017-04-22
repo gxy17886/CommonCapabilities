@@ -1,8 +1,9 @@
 package org.cyclops.commoncapabilities.modcompat.ic2.capability.work;
 
-import forestry.core.errors.EnumErrorCode;
 import ic2.core.block.machine.tileentity.TileEntityStandardMachine;
 import org.cyclops.commoncapabilities.api.capability.work.IWorker;
+import org.cyclops.commoncapabilities.core.Helpers;
+import org.cyclops.commoncapabilities.modcompat.ic2.Ic2Helpers;
 
 /**
  * Worker capability for TileEntityStandardMachine machines.
@@ -18,7 +19,7 @@ public class TileStandardMachineWorker implements IWorker {
 
     @Override
     public boolean hasWork() {
-        return tile.getActive() || tile.getOutput() != null;
+        return tile.getActive() || Helpers.invokeMethod(tile, Ic2Helpers.METHOD_TILESTANDARDMACHINE_GETOUTPUT) != null;
     }
 
     @Override
