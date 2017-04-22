@@ -1,0 +1,8 @@
+As always, don't forget to backup your world before updating!
+Requires CyclopsCore version 0.9.1 or higher.
+
+Additions:
+* Register slotless item handler
+
+Changes:
+* Remove IWorldNameable capability, improves ItemStack#copy efficiency.

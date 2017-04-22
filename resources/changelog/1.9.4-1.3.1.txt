@@ -1,0 +1,10 @@
+As always, don't forget to backup your world before updating!
+Requires CyclopsCore version 0.9.1 or higher.
+
+Changes:
+* Also match ItemStacks when either of them have a wildcard damage value
+* Simplify ItemHandlerInventoryState hash updates
+
+Fixes:
+* Fix match flags not being used during item extraction, Closes #2
+
