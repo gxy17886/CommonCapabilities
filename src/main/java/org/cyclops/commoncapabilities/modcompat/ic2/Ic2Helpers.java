@@ -40,6 +40,4 @@ public class Ic2Helpers {
 
     public static Field FIELD_TILESOLARDISTILLER_SKYLIGHT = Helpers.getField(TileEntitySolarDestiller.class, "skyLight");
 
-    public static Field FIELD_TILECHUNKLOADER_LOADEDCHUNKS = Helpers.getField(TileEntityChunkloader.class, "loadedChunks");
-
 }
