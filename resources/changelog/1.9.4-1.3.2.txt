@@ -1,0 +1,5 @@
+As always, don't forget to backup your world before updating!
+Requires CyclopsCore version 0.10.1 or higher.
+
+Fixes:
+* Fix crash for IC2 compat after IC2 build 167, Closes #5
