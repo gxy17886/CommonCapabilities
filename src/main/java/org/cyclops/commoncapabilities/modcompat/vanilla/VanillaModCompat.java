@@ -1,17 +1,21 @@
 package org.cyclops.commoncapabilities.modcompat.vanilla;
 
+import net.minecraft.item.ItemShulkerBox;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityBrewingStand;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.UniversalBucket;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import org.cyclops.commoncapabilities.CommonCapabilities;
 import org.cyclops.commoncapabilities.Reference;
 import org.cyclops.commoncapabilities.api.capability.temperature.ITemperature;
 import org.cyclops.commoncapabilities.api.capability.work.IWorker;
 import org.cyclops.commoncapabilities.capability.temperature.TemperatureConfig;
 import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
+import org.cyclops.commoncapabilities.modcompat.vanilla.capability.itemhandler.VanillaItemShulkerBoxItemHandler;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.temperature.VanillaFurnaceTemperature;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.temperature.VanillaUniversalBucketTemperature;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.work.VanillaBrewingStandWorker;
@@ -99,6 +103,21 @@ public class VanillaModCompat implements IModCompat {
                         @Override
                         public ICapabilityProvider createProvider(UniversalBucket hostType, ItemStack host) {
                             return new DefaultCapabilityProvider<>(TemperatureConfig.CAPABILITY, new VanillaUniversalBucketTemperature(host));
+                        }
+                    });
+
+            // ItemHandler
+            registry.registerItem(ItemShulkerBox.class,
+                    new ICapabilityConstructor<IItemHandler, ItemShulkerBox, ItemStack>() {
+                        @Override
+                        public Capability<IItemHandler> getCapability() {
+                            return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
+                        }
+
+                        @Nullable
+                        @Override
+                        public ICapabilityProvider createProvider(ItemShulkerBox hostType, ItemStack host) {
+                            return new DefaultCapabilityProvider<>(getCapability(), new VanillaItemShulkerBoxItemHandler(host));
                         }
                     });
         }
