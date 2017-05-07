@@ -69,7 +69,6 @@ sourceSets {
     main {
         java {
             exclude '**/modcompat/enderio/**'
-            exclude '**/modcompat/tconstruct/**'
         }
     }
 }
