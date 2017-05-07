@@ -134,7 +134,7 @@ public class VanillaItemShulkerBoxItemHandler implements IItemHandlerModifiable 
 
         ItemStack extracted = existingStack.splitStack(amount);
         if (!simulate) {
-            setStackInSlot(slot, ItemStack.EMPTY);
+            setStackInSlot(slot, existingStack);
         }
         return extracted;
     }
