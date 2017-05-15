@@ -1,7 +1,9 @@
 package org.cyclops.commoncapabilities.modcompat.ic2.capability.work;
 
+import ic2.api.item.ElectricItem;
 import ic2.core.block.machine.tileentity.TileEntityAdvMiner;
 import ic2.core.item.tool.ItemScanner;
+import ic2.core.util.StackUtil;
 
 /**
  * Worker capability for {@link TileEntityAdvMiner}.
@@ -15,10 +17,10 @@ public class TileAdvMinerWorker extends TileElectricMachineWorkerBase<TileEntity
     @Override
     public boolean canWork() {
         return super.canWork()
-                || (getEnergy().getEnergy() >= getTile().energyConsume
+                || (getEnergy().getEnergy() >= 512.0D
                 && !getTile().getWorld().isBlockPowered(getTile().getPos())
-                && !getTile().scannerSlot.isEmpty()
-                && !(getTile().scannerSlot.get().getItem() instanceof ItemScanner && !((ItemScanner)getTile().scannerSlot.get().getItem()).haveChargeforScan(getTile().scannerSlot.get()))
+                && !StackUtil.isEmpty(getTile().scannerSlot.get())
+                && ElectricItem.manager.canUse(getTile().scannerSlot.get(), 64.0D)
         );
     }
 }
