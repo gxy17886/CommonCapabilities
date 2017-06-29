@@ -37,7 +37,7 @@ public class Helpers {
 
     public static <E> Method getMethod(Class<? super E> clazz, String method, Class<?>... methodTypes) {
         try {
-            return ReflectionHelper.findMethod(clazz, null, new String[]{method}, methodTypes);
+            return ReflectionHelper.findMethod(clazz, method, null, methodTypes);
         } catch (ReflectionHelper.UnableToFindMethodException e) {
             e.printStackTrace();
             return null;
