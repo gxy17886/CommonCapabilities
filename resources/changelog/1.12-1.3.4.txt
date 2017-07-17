@@ -1,0 +1,10 @@
+As always, don't forget to backup your world before updating!
+Requires CyclopsCore version 0.10.7 or higher.
+
+Changes:
+* Disable config version warning
+
+Fixes:
+* Fix DefaultSlotlessItemHandlerWrapper losing items
+* Fix compilation issue because of latest Forge RB
+
