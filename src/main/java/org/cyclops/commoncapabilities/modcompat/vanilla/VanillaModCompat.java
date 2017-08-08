@@ -1,12 +1,20 @@
 package org.cyclops.commoncapabilities.modcompat.vanilla;
 
+import ic2.core.item.capability.CapabilityFluidHandlerItem;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.item.ItemShulkerBox;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityBrewingStand;
 import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fluids.UniversalBucket;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import org.cyclops.commoncapabilities.CommonCapabilities;
@@ -15,6 +23,12 @@ import org.cyclops.commoncapabilities.api.capability.temperature.ITemperature;
 import org.cyclops.commoncapabilities.api.capability.work.IWorker;
 import org.cyclops.commoncapabilities.capability.temperature.TemperatureConfig;
 import org.cyclops.commoncapabilities.capability.worker.WorkerConfig;
+import org.cyclops.commoncapabilities.modcompat.vanilla.capability.energystorage.VanillaEntityItemEnergyStorage;
+import org.cyclops.commoncapabilities.modcompat.vanilla.capability.energystorage.VanillaEntityItemFrameEnergyStorage;
+import org.cyclops.commoncapabilities.modcompat.vanilla.capability.fluidhandler.VanillaEntityItemFluidHandler;
+import org.cyclops.commoncapabilities.modcompat.vanilla.capability.fluidhandler.VanillaEntityItemFrameFluidHandler;
+import org.cyclops.commoncapabilities.modcompat.vanilla.capability.itemhandler.VanillaEntityItemFrameItemHandler;
+import org.cyclops.commoncapabilities.modcompat.vanilla.capability.itemhandler.VanillaEntityItemItemHandler;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.itemhandler.VanillaItemShulkerBoxItemHandler;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.temperature.VanillaFurnaceTemperature;
 import org.cyclops.commoncapabilities.modcompat.vanilla.capability.temperature.VanillaUniversalBucketTemperature;
@@ -118,6 +132,172 @@ public class VanillaModCompat implements IModCompat {
                         @Override
                         public ICapabilityProvider createProvider(ItemShulkerBox hostType, ItemStack host) {
                             return new DefaultCapabilityProvider<>(getCapability(), new VanillaItemShulkerBoxItemHandler(host));
+                        }
+                    });
+            registry.registerEntity(EntityItem.class,
+                    new ICapabilityConstructor<IItemHandler, EntityItem, EntityItem>() {
+                        @Override
+                        public Capability<IItemHandler> getCapability() {
+                            return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
+                        }
+
+                        @Nullable
+                        @Override
+                        public ICapabilityProvider createProvider(EntityItem hostType, final EntityItem host) {
+                            return new ICapabilityProvider() {
+                                @Override
+                                public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+                                    return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
+                                            && host.getEntityItem().hasCapability(capability, facing);
+                                }
+
+                                @Nullable
+                                @Override
+                                public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+                                    return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
+                                            && host.getEntityItem().hasCapability(capability, facing)
+                                            ? (T) new VanillaEntityItemItemHandler(host, facing) : null;
+                                }
+                            };
+                        }
+                    });
+            registry.registerEntity(EntityItemFrame.class,
+                    new ICapabilityConstructor<IItemHandler, EntityItemFrame, EntityItemFrame>() {
+                        @Override
+                        public Capability<IItemHandler> getCapability() {
+                            return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
+                        }
+
+                        @Nullable
+                        @Override
+                        public ICapabilityProvider createProvider(EntityItemFrame hostType, final EntityItemFrame host) {
+                            return new ICapabilityProvider() {
+                                @Override
+                                public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+                                    return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
+                                            && host.getDisplayedItem().hasCapability(capability, facing);
+                                }
+
+                                @Nullable
+                                @Override
+                                public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+                                    return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
+                                            && host.getDisplayedItem().hasCapability(capability, facing)
+                                            ? (T) new VanillaEntityItemFrameItemHandler(host, facing) : null;
+                                }
+                            };
+                        }
+                    });
+
+            // FluidHandler
+            registry.registerEntity(EntityItem.class,
+                    new ICapabilityConstructor<IFluidHandler, EntityItem, EntityItem>() {
+                        @Override
+                        public Capability<IFluidHandler> getCapability() {
+                            return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
+                        }
+
+                        @Nullable
+                        @Override
+                        public ICapabilityProvider createProvider(EntityItem hostType, final EntityItem host) {
+                            return new ICapabilityProvider() {
+                                @Override
+                                public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+                                    return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY
+                                            && host.getEntityItem().hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, facing);
+                                }
+
+                                @Nullable
+                                @Override
+                                public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+                                    return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY
+                                            && host.getEntityItem().hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, facing)
+                                            ? (T) new VanillaEntityItemFluidHandler(host, facing) : null;
+                                }
+                            };
+                        }
+                    });
+            registry.registerEntity(EntityItemFrame.class,
+                    new ICapabilityConstructor<IFluidHandler, EntityItemFrame, EntityItemFrame>() {
+                        @Override
+                        public Capability<IFluidHandler> getCapability() {
+                            return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
+                        }
+
+                        @Nullable
+                        @Override
+                        public ICapabilityProvider createProvider(EntityItemFrame hostType, final EntityItemFrame host) {
+                            return new ICapabilityProvider() {
+                                @Override
+                                public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+                                    return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY
+                                            && host.getDisplayedItem().hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, facing);
+                                }
+
+                                @Nullable
+                                @Override
+                                public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+                                    return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY
+                                            && host.getDisplayedItem().hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, facing)
+                                            ? (T) new VanillaEntityItemFrameFluidHandler(host, facing) : null;
+                                }
+                            };
+                        }
+                    });
+
+            // EnergyStorage
+            registry.registerEntity(EntityItem.class,
+                    new ICapabilityConstructor<IEnergyStorage, EntityItem, EntityItem>() {
+                        @Override
+                        public Capability<IEnergyStorage> getCapability() {
+                            return CapabilityEnergy.ENERGY;
+                        }
+
+                        @Nullable
+                        @Override
+                        public ICapabilityProvider createProvider(EntityItem hostType, final EntityItem host) {
+                            return new ICapabilityProvider() {
+                                @Override
+                                public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+                                    return capability == CapabilityEnergy.ENERGY
+                                            && host.getEntityItem().hasCapability(capability, facing);
+                                }
+
+                                @Nullable
+                                @Override
+                                public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+                                    return capability == CapabilityEnergy.ENERGY
+                                            && host.getEntityItem().hasCapability(capability, facing)
+                                            ? (T) new VanillaEntityItemEnergyStorage(host, facing) : null;
+                                }
+                            };
+                        }
+                    });
+            registry.registerEntity(EntityItemFrame.class,
+                    new ICapabilityConstructor<IEnergyStorage, EntityItemFrame, EntityItemFrame>() {
+                        @Override
+                        public Capability<IEnergyStorage> getCapability() {
+                            return CapabilityEnergy.ENERGY;
+                        }
+
+                        @Nullable
+                        @Override
+                        public ICapabilityProvider createProvider(EntityItemFrame hostType, final EntityItemFrame host) {
+                            return new ICapabilityProvider() {
+                                @Override
+                                public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+                                    return capability == CapabilityEnergy.ENERGY
+                                            && host.getDisplayedItem().hasCapability(capability, facing);
+                                }
+
+                                @Nullable
+                                @Override
+                                public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+                                    return capability == CapabilityEnergy.ENERGY
+                                            && host.getDisplayedItem().hasCapability(capability, facing)
+                                            ? (T) new VanillaEntityItemFrameEnergyStorage(host, facing) : null;
+                                }
+                            };
                         }
                     });
         }
