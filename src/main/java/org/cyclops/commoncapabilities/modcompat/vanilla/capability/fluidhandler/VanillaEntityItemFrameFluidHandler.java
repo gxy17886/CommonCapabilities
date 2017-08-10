@@ -41,7 +41,9 @@ public class VanillaEntityItemFrameFluidHandler extends VanillaEntityItemFrameCa
         IFluidHandlerItem fluidHandler = getCapability();
         if (fluidHandler != null) {
             int ret = fluidHandler.fill(resource, doFill);
-            updateItemStack(fluidHandler.getContainer());
+            if (ret > 0 && doFill) {
+                updateItemStack(fluidHandler.getContainer());
+            }
             return ret;
         }
         return 0;
@@ -53,7 +55,9 @@ public class VanillaEntityItemFrameFluidHandler extends VanillaEntityItemFrameCa
         IFluidHandlerItem fluidHandler = getCapability();
         if (fluidHandler != null) {
             FluidStack ret = fluidHandler.drain(resource, doDrain);
-            updateItemStack(fluidHandler.getContainer());
+            if (ret != null && doDrain) {
+                updateItemStack(fluidHandler.getContainer());
+            }
             return ret;
         }
         return null;
@@ -65,7 +69,9 @@ public class VanillaEntityItemFrameFluidHandler extends VanillaEntityItemFrameCa
         IFluidHandlerItem fluidHandler = getCapability();
         if (fluidHandler != null) {
             FluidStack ret = fluidHandler.drain(maxDrain, doDrain);
-            updateItemStack(fluidHandler.getContainer());
+            if (ret != null && doDrain) {
+                updateItemStack(fluidHandler.getContainer());
+            }
             return ret;
         }
         return null;

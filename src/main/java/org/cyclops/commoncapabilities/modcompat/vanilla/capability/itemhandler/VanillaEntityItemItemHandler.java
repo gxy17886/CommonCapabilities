@@ -51,7 +51,7 @@ public class VanillaEntityItemItemHandler extends VanillaEntityItemCapabilityDel
         IItemHandler itemHandler = getCapability(innerStack);
         if (itemHandler != null) {
             ItemStack ret = itemHandler.insertItem(slot, stack, simulate);
-            if (!simulate) {
+            if (stack.getCount() != ret.getCount() && !simulate) {
                 updateItemStack(innerStack);
             }
             return ret;
@@ -66,7 +66,7 @@ public class VanillaEntityItemItemHandler extends VanillaEntityItemCapabilityDel
         IItemHandler itemHandler = getCapability(innerStack);
         if (itemHandler != null) {
             ItemStack ret = itemHandler.extractItem(slot, amount, simulate);
-            if (!simulate) {
+            if (!ret.isEmpty() && !simulate) {
                 updateItemStack(innerStack);
             }
             return ret;

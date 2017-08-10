@@ -29,7 +29,9 @@ public class VanillaEntityItemEnergyStorage extends VanillaEntityItemCapabilityD
         IEnergyStorage energyStorage = getCapability(itemStack);
         if (energyStorage != null) {
             int ret = energyStorage.receiveEnergy(maxReceive, simulate);
-            updateItemStack(itemStack);
+            if (!simulate && ret > 0) {
+                updateItemStack(itemStack);
+            }
             return ret;
         }
         return 0;
@@ -41,7 +43,9 @@ public class VanillaEntityItemEnergyStorage extends VanillaEntityItemCapabilityD
         IEnergyStorage energyStorage = getCapability(itemStack);
         if (energyStorage != null) {
             int ret = energyStorage.extractEnergy(maxExtract, simulate);
-            updateItemStack(itemStack);
+            if (!simulate && ret > 0) {
+                updateItemStack(itemStack);
+            }
             return ret;
         }
         return 0;
