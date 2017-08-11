@@ -1,6 +1,5 @@
 package org.cyclops.commoncapabilities.modcompat.vanilla;
 
-import ic2.core.item.capability.CapabilityFluidHandlerItem;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.item.ItemShulkerBox;
@@ -148,14 +147,14 @@ public class VanillaModCompat implements IModCompat {
                                 @Override
                                 public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
                                     return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
-                                            && host.getEntityItem().hasCapability(capability, facing);
+                                            && host.getItem().hasCapability(capability, facing);
                                 }
 
                                 @Nullable
                                 @Override
                                 public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
                                     return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
-                                            && host.getEntityItem().hasCapability(capability, facing)
+                                            && host.getItem().hasCapability(capability, facing)
                                             ? (T) new VanillaEntityItemItemHandler(host, facing) : null;
                                 }
                             };
@@ -204,14 +203,14 @@ public class VanillaModCompat implements IModCompat {
                                 @Override
                                 public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
                                     return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY
-                                            && host.getEntityItem().hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, facing);
+                                            && host.getItem().hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, facing);
                                 }
 
                                 @Nullable
                                 @Override
                                 public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
                                     return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY
-                                            && host.getEntityItem().hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, facing)
+                                            && host.getItem().hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, facing)
                                             ? (T) new VanillaEntityItemFluidHandler(host, facing) : null;
                                 }
                             };
@@ -260,14 +259,14 @@ public class VanillaModCompat implements IModCompat {
                                 @Override
                                 public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
                                     return capability == CapabilityEnergy.ENERGY
-                                            && host.getEntityItem().hasCapability(capability, facing);
+                                            && host.getItem().hasCapability(capability, facing);
                                 }
 
                                 @Nullable
                                 @Override
                                 public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
                                     return capability == CapabilityEnergy.ENERGY
-                                            && host.getEntityItem().hasCapability(capability, facing)
+                                            && host.getItem().hasCapability(capability, facing)
                                             ? (T) new VanillaEntityItemEnergyStorage(host, facing) : null;
                                 }
                             };

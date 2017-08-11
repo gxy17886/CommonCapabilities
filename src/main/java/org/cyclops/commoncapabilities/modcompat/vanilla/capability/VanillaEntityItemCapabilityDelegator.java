@@ -31,11 +31,11 @@ public abstract class VanillaEntityItemCapabilityDelegator<C> {
     }
 
     protected ItemStack getItemStack() {
-        return entity.getEntityItem();
+        return entity.getItem();
     }
 
     protected void updateItemStack(ItemStack itemStack) {
-        entity.setEntityItemStack(itemStack);
+        entity.setItem(itemStack);
     }
 
     protected abstract Capability<C> getCapabilityType();
